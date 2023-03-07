@@ -1,26 +1,22 @@
-import { Injector, Logger, webpack } from "replugged";
+import { Injector, Logger, common, settings } from "replugged";
+export const { users: UserStore } = common;
+import * as Utils from "./lib/utils";
+import * as Types from "./types";
+export const CurrentUser = (await Utils.currentUser) as Types.User;
+import { defaultSettings } from "./lib/consts";
+export const PluginLogger = Logger.plugin("DiscordBypasses");
+export const SettingValues = await settings.init("Tharki.DiscordBypasses", defaultSettings);
+export const PluginInjector = new Injector();
 
-const inject = new Injector();
-const logger = Logger.plugin("PluginTemplate");
+import { registerSettings } from "./Components/Settings";
+import { applyInjections } from "./patches/index";
+export const start = (): void => {
+  registerSettings();
+  applyInjections();
+};
 
-export async function start(): Promise<void> {
-  const typingMod = await webpack.waitForModule<{
-    startTyping: (channelId: string) => void;
-  }>(webpack.filters.byProps("startTyping"));
-  const getChannelMod = await webpack.waitForModule<{
-    getChannel: (id: string) => {
-      name: string;
-    };
-  }>(webpack.filters.byProps("getChannel"));
+export const stop = (): void => {
+  PluginInjector.uninjectAll();
+};
 
-  if (typingMod && getChannelMod) {
-    inject.instead(typingMod, "startTyping", ([channel]) => {
-      const channelObj = getChannelMod.getChannel(channel);
-      logger.log(`Typing prevented! Channel: #${channelObj?.name ?? "unknown"} (${channel}).`);
-    });
-  }
-}
-
-export function stop(): void {
-  inject.uninjectAll();
-}
+export { Settings } from "./Components/Settings";

@@ -1,18 +1,19 @@
 {
-  "id": "dev.replugged.PluginTemplate",
-  "name": "Plugin Template",
-  "description": "A plugin template",
+  "id": "Tharki.DiscordBypasses",
+  "name": "DiscordBypasses",
+  "description": "A collection of bypasses and utilities. Take a look in the plugin's settings for the features.",
   "author": {
-    "name": "replugged",
-    "discordID": "1000992611840049192",
-    "github": "replugged-org"
+    "name": "Ahlawat",
+    "discordID": "1025214794766221384",
+    "github": "Tharki-God"
   },
-  "version": "1.0.0",
+  "version": "0.9.0",
   "updater": {
     "type": "github",
-    "id": "replugged-org/plugin-template"
+    "id": "Tharki-God/DiscordBypasses"
   },
   "license": "MIT",
   "type": "replugged-plugin",
-  "renderer": "src/index.ts"
+  "renderer": "src/index.ts",
+  "plaintextPatches": "src/plaintextPatches.ts"
 }
