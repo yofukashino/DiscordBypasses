@@ -12,7 +12,7 @@ export const patchStreamPreview = (): void => {
   PluginInjector.instead(ElectronModule, "makeChunkedRequest", (args, res) => {
     if (!args[0].includes("preview") && args[2].method !== "POST") return res(...args);
     if (!replacePreviewWith) return;
-    res(args[0], { thumbnail: replacePreviewWith }, args[2]);
+    return res(args[0], { thumbnail: replacePreviewWith }, args[2]);
   });
   PluginInjector.instead(StreamPreviewStore, "getPreviewURL", (args, res) => {
     if (args[2] == CurrentUser.id) return replacePreviewWith;
