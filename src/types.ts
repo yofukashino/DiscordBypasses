@@ -176,6 +176,7 @@ export interface ImagePickerProps {
   onChange: (newvalue: string) => void;
 }
 export interface ImagePickerState {
+  showClearButton: boolean;
   img: string;
 }
 
@@ -183,6 +184,7 @@ export interface Settings {
   NSFW: boolean;
   bandwidth: boolean;
   PTT: boolean;
+  setBadge: boolean;
   streamPreview: boolean;
   fakePreview: string;
   noAFK: boolean;

@@ -4,6 +4,7 @@ export const defaultSettings = {
   NSFW: !CurrentUser?.nsfwAllowed,
   bandwidth: true,
   PTT: true,
+  setBadge: true,
   streamPreview: true,
   fakePreview: "",
   noAFK: true,

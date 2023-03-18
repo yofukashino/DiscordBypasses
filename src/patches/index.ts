@@ -1,6 +1,7 @@
 import { bypassNSFW } from "./User";
 import { patchTimeouts } from "./Timeout";
 import { patchPTT } from "./Permission";
+import { patchBadges } from "./SetBadge";
 import { patchStreamPreview } from "./StreamPreview";
 import { patchIdle } from "./CurrentUserIdle";
 import { patchSpotifyPremium } from "./SpotifyPremium";
@@ -10,6 +11,7 @@ export const applyInjections = (): void => {
   bypassNSFW();
   patchTimeouts();
   patchPTT();
+  patchBadges();
   patchStreamPreview();
   patchIdle();
   patchSpotifyPremium();

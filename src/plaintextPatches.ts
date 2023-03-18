@@ -14,7 +14,7 @@ export default [
     replacements: [
       {
         match: /(\(\w+\|\|\w+\))&&(\(\w+=\(0,\w+\.jsx\)\(\w+\.animated\.div)/,
-        replace: `(replugged?.plugins?.getExports('Tharki.DiscordBypasses')?.SettingValues?.get("plainFolderIcon") ? true : $1) && $2`,
+        replace: `(replugged?.plugins?.getExports('Tharki.DiscordBypasses')?.SettingValues?.get("plainFolderIcon") || $1) && $2`,
       },
     ],
   },

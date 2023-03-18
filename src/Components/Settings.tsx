@@ -4,7 +4,7 @@ import { ClientThemesExperimentConfig } from "../lib/requiredModules";
 import { defaultSettings } from "../lib/consts";
 import { ImagePickerItem } from "./ImagePicker";
 import * as Types from "../types";
-const { SwitchItem } = components;
+const { SwitchItem, FormText, Divider } = components;
 export const registerSettings = (): void => {
   for (const key in defaultSettings) {
     if (SettingValues.has(key as keyof Types.Settings)) return;
@@ -37,6 +37,13 @@ export const Settings = () => {
           ...util.useSetting(SettingValues, "PTT", defaultSettings.PTT),
         }}>
         No push-to-talk
+      </SwitchItem>
+      <SwitchItem
+        {...{
+          note: "Hides the badge that appears on the taskbar icon.",
+          ...util.useSetting(SettingValues, "setBadge", defaultSettings.setBadge),
+        }}>
+        Hide Icon Badge
       </SwitchItem>
       <SwitchItem
         {...{
@@ -91,12 +98,21 @@ export const Settings = () => {
       </SwitchItem>
       <SwitchItem
         {...{
-          disabled: !ClientThemesExperimentConfig.getCurrentConfig().hasSidebarEditor,
           note: "Show Plain Folder Icon instead of the small guilds icons on guild folders.",
           ...util.useSetting(SettingValues, "plainFolderIcon", defaultSettings.plainFolderIcon),
         }}>
         Plain Folder Icon
       </SwitchItem>
+      <FormText.LABEL_BOLD
+        {...{
+          style: {
+            textAlign: "center",
+            paddingBottom: "20px",
+          },
+        }}>
+        Reload Plugin/Discord for settings to take effect.
+      </FormText.LABEL_BOLD>
+      <Divider />
     </div>
   );
 };
