@@ -57,7 +57,7 @@ export class ImagePickerItem extends React.Component<
                   },
                   onChange: async (e) => {
                     const file = e.target.files[0];
-                    if (file.size / 1024 > 200) {
+                    if (file?.size / 1024 > 200) {
                       Toasts.toast("File Must be under 200kb.", Toasts.Kind.SUCCESS);
                       return;
                     }

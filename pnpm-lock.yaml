@@ -12,7 +12,7 @@ specifiers:
   eslint-plugin-react: ^7.31.10
   lodash: ^4.17.21
   prettier: ^2.8.1
-  replugged: ^4.2.1
+  replugged: ^4.2.2
   typescript: ^4.8.4
 
 devDependencies:
@@ -27,7 +27,7 @@ devDependencies:
   eslint-plugin-react: 7.32.2_eslint@8.34.0
   lodash: 4.17.21
   prettier: 2.8.4
-  replugged: 4.2.1
+  replugged: 4.2.2
   typescript: 4.9.5
 
 packages:
@@ -3694,8 +3694,8 @@ packages:
       rc: 1.2.8
     dev: true
 
-  /replugged/4.2.1:
-    resolution: {integrity: sha512-F4AIb8/Etu36QWbPrF311I5yPdZOj6OuPrZ8BOxE7yOtberyfoDcuTq3RmuGxsA+/oorNi9sIwr5N80PJoo7pA==}
+  /replugged/4.2.2:
+    resolution: {integrity: sha512-QBiAg+UEblcaCetS7ScyBtKqUtiBykMZTDKwpDhwl/GMksC1rmN6P0GDsVXRSQTOMx8DMYcF5QegsgYLhvvZaw==}
     engines: {node: '>=14.0.0'}
     hasBin: true
     dependencies:

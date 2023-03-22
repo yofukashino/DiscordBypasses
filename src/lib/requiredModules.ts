@@ -1,7 +1,7 @@
 import { webpack } from "replugged";
 import * as Utils from "./utils";
 import * as Types from "../types";
-export const ClientThemesExperimentModule = webpack.getBySource(/"Client Themes"/);
+export const ClientThemesExperimentModule = webpack.getBySource(/"Client Themes Sidebar Editor"/);
 export const ClientThemesExperimentConfig = webpack.getExportsForProps(
   ClientThemesExperimentModule,
   ["getCurrentConfig", "definition"],
