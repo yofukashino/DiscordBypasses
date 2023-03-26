@@ -9,12 +9,9 @@ export const ClientThemesExperimentConfig = webpack.getExportsForProps(
 export const TimeoutModule = webpack.getModule((m) =>
   Utils.prototypeChecker(m?.exports, ["start", "stop", "isStarted"]),
 );
-export const Timeout = Object.values(TimeoutModule).find(
-  (m) =>
-    ["start", "stop", "isStarted"].every(
-      (proto) => m?.prototype?.[proto],
-    ) as unknown as Types.Timeout,
-);
+export const Timeout = Object.values(TimeoutModule).find((m) =>
+  ["start", "stop", "isStarted"].every((proto) => m?.prototype?.[proto]),
+) as unknown as Types.Timeout;
 export const DiscordConstantsModule = webpack.getBySource(
   /command:"giphy"/,
 ) as unknown as Types.DefaultTypes.ObjectExports;
@@ -44,4 +41,7 @@ export const SpotifyProtocoalStore = webpack.getBySource(
 ) as unknown as Types.GenericModule;
 export const SpotifyPremiumCheck = webpack.getBySource(
   /"spotify account is not premium"/,
+) as unknown as Types.GenericModule;
+export const ClientThemeUpdate = webpack.getBySource(
+  "updateTheme:function",
 ) as unknown as Types.GenericModule;

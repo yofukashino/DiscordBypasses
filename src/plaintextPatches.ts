@@ -5,7 +5,7 @@ export default [
     replacements: [
       {
         match: /({key:"isPreview",get:function\(\){return )(\w+)}}/,
-        replace: `$1 $2=!replugged.plugins.getExports('Tharki.DiscordBypasses').SettingValues.get("clientThemes")}}`,
+        replace: `$1 $2=!replugged?.plugins?.getExports('Tharki.DiscordBypasses')?.SettingValues?.get("clientThemes")}}`,
       },
     ],
   },
