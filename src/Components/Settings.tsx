@@ -18,7 +18,7 @@ export const Settings = () => {
     <div>
       <SwitchItem
         {...{
-          disabled: CurrentUser?.nsfwAllowed,
+          disabled: CurrentUser?.nsfwAllowed && !SettingValues.get("NSFW", defaultSettings.NSFW),
           note: "Bypasses the channel restriction when you're too young to enter channels marked as NSFW.",
           ...util.useSetting(SettingValues, "NSFW", defaultSettings.NSFW),
         }}>
