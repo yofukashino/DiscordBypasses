@@ -1,5 +1,7 @@
 ### DiscordBypasses
-
+```diff
+- WARNING: This version of DiscordBypasses plugin contains some unofficial bypasses.
+```
 A collection of bypasses and utilities in one plugin.
 
 You can toggle them in the plugin settings.
