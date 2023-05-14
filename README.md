@@ -1,7 +1,9 @@
 ### DiscordBypasses
 ```diff
-- WARNING: This version of DiscordBypasses plugin contains some unofficial bypasses. For only the offical bypasses install [LegalDiscordBypasses](https://github.com/Tharki-God/DiscordBypasses)
+- WARNING: This version of DiscordBypasses plugin contains some unofficial bypasses. 
 ```
+For only the offical bypasses install [LegalDiscordBypasses](https://github.com/Tharki-God/DiscordBypasses)
+
 A collection of bypasses and utilities in one plugin.
 
 You can toggle them in the plugin settings.
