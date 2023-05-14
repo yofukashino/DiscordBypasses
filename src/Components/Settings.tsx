@@ -1,6 +1,5 @@
 import { components, util } from "replugged";
 import { CurrentUser, PluginLogger, SettingValues } from "../index";
-import { ClientThemesExperimentConfig } from "../lib/requiredModules";
 import { defaultSettings } from "../lib/consts";
 import { ImagePickerItem } from "./ImagePicker";
 import * as Types from "../types";
@@ -90,8 +89,7 @@ export const Settings = () => {
       </SwitchItem>
       <SwitchItem
         {...{
-          disabled: !ClientThemesExperimentConfig.getCurrentConfig().hasSidebarEditor,
-          note: "Remove need of nitro from client themes which is experimental feature (Enable the experiment to toggle this setting).",
+          note: "Remove need of nitro from client themes which is beta feature.",
           ...util.useSetting(SettingValues, "clientThemes", defaultSettings.clientThemes),
         }}>
         Client Themes bypass

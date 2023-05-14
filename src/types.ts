@@ -1,6 +1,6 @@
 export { types as DefaultTypes } from "replugged";
 import { types as DefaultTypes } from "replugged";
-import { Timeout } from "./lib/requiredModules";
+export { ReactElement } from "react";
 export interface GenericModule {
   [key: string]: DefaultTypes.AnyFunction;
 }
@@ -155,6 +155,18 @@ export interface StreamPreviewStore {
   getIsPreviewLoading: DefaultTypes.AnyFunction;
   getPreviewURL: DefaultTypes.AnyFunction;
   getPreviewURLForStreamKey: DefaultTypes.AnyFunction;
+}
+export interface ClientThemesBackgroundStore {
+  getLinearGradient: DefaultTypes.AnyFunction;
+  initializev;
+  __getLocalVars: DefaultTypes.AnyFunction;
+  constructor: DefaultTypes.AnyFunction;
+  gradientAngle: number | null | undefined;
+  gradientPreset: object | null | undefined;
+  isEditorOpen: boolean;
+  isPreview: boolean;
+  mobilePendingThemeIndex: number | null | undefined;
+  setGradientPreset: DefaultTypes.AnyFunction;
 }
 export interface CurrentUserIdle {
   getIdleSince: DefaultTypes.AnyFunction;

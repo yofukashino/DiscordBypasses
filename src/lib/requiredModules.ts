@@ -1,11 +1,6 @@
 import { webpack } from "replugged";
 import * as Utils from "./utils";
 import * as Types from "../types";
-export const ClientThemesExperimentModule = webpack.getBySource(/"Client Themes Sidebar Editor"/);
-export const ClientThemesExperimentConfig = webpack.getExportsForProps(
-  ClientThemesExperimentModule,
-  ["getCurrentConfig", "definition"],
-) as Types.ClientThemesExperimentConfig;
 export const TimeoutModule = webpack.getModule((m) =>
   Utils.prototypeChecker(m?.exports, ["start", "stop", "isStarted"]),
 );
@@ -42,6 +37,17 @@ export const SpotifyProtocoalStore = webpack.getBySource(
 export const SpotifyPremiumCheck = webpack.getBySource(
   /"spotify account is not premium"/,
 ) as unknown as Types.GenericModule;
+export const ClientThemesBackgroundStore = webpack.getByProps([
+  "isPreview",
+  "gradientPreset",
+  "setGradientPreset",
+]) as unknown as Types.ClientThemesBackgroundStore;
 export const ClientThemeUpdate = webpack.getBySource(
   "updateTheme:function",
 ) as unknown as Types.GenericModule;
+export const GradientPresetModule = webpack.getBySource(
+  ".Messages.CLIENT_THEMES_GRADIENT_MINT_APPLE",
+);
+export const GradientPresets = Object.values(GradientPresetModule).find(
+  (presets) => !Array.isArray(presets),
+);

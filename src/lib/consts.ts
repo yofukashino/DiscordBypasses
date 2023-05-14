@@ -1,5 +1,4 @@
 import { CurrentUser } from "../index";
-import { ClientThemesExperimentConfig } from "./requiredModules";
 export const defaultSettings = {
   NSFW: !CurrentUser?.nsfwAllowed,
   bandwidth: true,
@@ -12,6 +11,7 @@ export const defaultSettings = {
   spotifyPause: true,
   verification: true,
   maxAccounts: true,
-  clientThemes: ClientThemesExperimentConfig.getCurrentConfig().hasSidebarEditor,
+  clientThemes: true,
+  gradientPreset: null,
   plainFolderIcon: true,
 };

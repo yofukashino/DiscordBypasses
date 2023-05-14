@@ -5,7 +5,7 @@ import * as Types from "./types";
 export const CurrentUser = (await Utils.currentUser) as Types.User;
 import { defaultSettings } from "./lib/consts";
 export const PluginLogger = Logger.plugin("DiscordBypasses");
-export const SettingValues = await settings.init("Tharki.DiscordBypasses", defaultSettings);
+export const SettingValues = await settings.init("dev.tharki.DiscordBypasses", defaultSettings);
 export const PluginInjector = new Injector();
 
 import { registerSettings } from "./Components/Settings";
