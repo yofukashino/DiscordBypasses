@@ -5,11 +5,11 @@ export default [
     replacements: [
       {
         match: /({key:"gradientPreset",get:function\(\){)return (\w+)}}/,
-        replace: `$1var bypassPreset=replugged?.plugins?.getExports('dev.tharki.DiscordBypasses')?.SettingValues?.get("gradientPreset", null); return $2= bypassPreset ? bypassPreset : $2}}, {key:"setGradientPreset",get:function(){return (e) => $2=e}}`,
+        replace: `$1var bypassPreset=replugged?.plugins?.getExports('dev.tharki.LegalDiscordBypasses')?.SettingValues?.get("gradientPreset", null);return $2=bypassPreset??$2}}, {key:"setGradientPreset",get:function(){return (e) => $2=e}}`,
       },
       {
         match: /({key:"isPreview",get:function\(\){return )(\w+)}}/,
-        replace: `$1 $2=!replugged?.plugins?.getExports('dev.tharki.DiscordBypasses')?.SettingValues?.get("clientThemes")}}`,
+        replace: `$1 $2=!$2?$2:!replugged?.plugins?.getExports('dev.tharki.LegalDiscordBypasses')?.SettingValues?.get("clientThemes")}}`,
       },
     ],
   },
