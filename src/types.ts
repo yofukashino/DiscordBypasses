@@ -1,9 +1,7 @@
 export { types as DefaultTypes } from "replugged";
 import { types as DefaultTypes } from "replugged";
 export { ReactElement } from "react";
-export interface GenericModule {
-  [key: string]: DefaultTypes.AnyFunction;
-}
+export interface GenericModule extends Record<string, DefaultTypes.AnyFunction> {}
 export interface ElectronModule {
   architecture: string;
   asyncify: DefaultTypes.AnyFunction;
@@ -118,6 +116,58 @@ export interface User {
   verified: boolean;
   createdAt: Date;
   tag: string;
+}
+export interface Permissions {
+  ADD_REACTIONS: bigint;
+  ADMINISTRATOR: bigint;
+  ATTACH_FILES: bigint;
+  BAN_MEMBERS: bigint;
+  CHANGE_NICKNAME: bigint;
+  CONNECT: bigint;
+  CREATE_EVENTS: bigint;
+  CREATE_GUILD_EXPRESSIONS: bigint;
+  CREATE_INSTANT_INVITE: bigint;
+  CREATE_PRIVATE_THREADS: bigint;
+  CREATE_PUBLIC_THREADS: bigint;
+  DEAFEN_MEMBERS: bigint;
+  EMBED_LINKS: bigint;
+  KICK_MEMBERS: bigint;
+  MANAGE_CHANNELS: bigint;
+  MANAGE_EVENTS: bigint;
+  MANAGE_GUILD: bigint;
+  MANAGE_GUILD_EXPRESSIONS: bigint;
+  MANAGE_MESSAGES: bigint;
+  MANAGE_NICKNAMES: bigint;
+  MANAGE_ROLES: bigint;
+  MANAGE_THREADS: bigint;
+  MANAGE_WEBHOOKS: bigint;
+  MENTION_EVERYONE: bigint;
+  MODERATE_MEMBERS: bigint;
+  MOVE_MEMBERS: bigint;
+  MUTE_MEMBERS: bigint;
+  PRIORITY_SPEAKER: bigint;
+  READ_MESSAGE_HISTORY: bigint;
+  REQUEST_TO_SPEAK: bigint;
+  SEND_MESSAGES: bigint;
+  SEND_MESSAGES_IN_THREADS: bigint;
+  SEND_TTS_MESSAGES: bigint;
+  SEND_VOICE_MESSAGES: bigint;
+  SPEAK: bigint;
+  STREAM: bigint;
+  USE_APPLICATION_COMMANDS: bigint;
+  USE_EMBEDDED_ACTIVITIES: bigint;
+  USE_EXTERNAL_EMOJIS: bigint;
+  USE_EXTERNAL_SOUNDS: bigint;
+  USE_EXTERNAL_STICKERS: bigint;
+  USE_SOUNDBOARD: bigint;
+  USE_VAD: bigint;
+  VIEW_AUDIT_LOG: bigint;
+  VIEW_CHANNEL: bigint;
+  VIEW_CREATOR_MONETIZATION_ANALYTICS: bigint;
+  VIEW_GUILD_ANALYTICS: bigint;
+}
+export interface DiscordConstants {
+  Permissions: Permissions;
 }
 export interface ClientThemesExperimentConfig {
   getCurrentConfig: () => {

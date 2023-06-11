@@ -1,6 +1,15 @@
 import * as Types from "./types";
 export default [
   {
+    find: "multiaccount_cta_tooltip_seen",
+    replacements: [
+      {
+        match: /(var \w+=)\d+(,\w+="switch-accounts-modal",\w+="multiaccount_cta_tooltip_seen")/,
+        replace: `$1Infinity$2`,
+      },
+    ],
+  },
+  {
     find: '"isPreview"',
     replacements: [
       {

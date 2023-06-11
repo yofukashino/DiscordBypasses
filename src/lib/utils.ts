@@ -16,12 +16,14 @@ export const prototypeChecker = (
     Object.values(ModuleExports).some((m: Types.DefaultTypes.AnyFunction) => m?.prototype?.[p]),
   );
 export const currentUser = new Promise((resolve) => {
-  const { users } = common;
-  const getCurrentUser = (): void => {
+  const { users, fluxDispatcher } = common;
+  const currentUser = users.getCurrentUser();
+  console.log(currentUser);
+  if (currentUser) resolve(currentUser);
+  const resolveOnConnection = (): void => {
+    fluxDispatcher.unsubscribe("CONNECTION_OPEN", resolveOnConnection);
     const currentUser = users.getCurrentUser();
-    if (currentUser) {
-      resolve(currentUser);
-    } else setTimeout(getCurrentUser, 100);
+    if (currentUser) resolve(currentUser);
   };
-  getCurrentUser();
+  fluxDispatcher.subscribe("CONNECTION_OPEN", resolveOnConnection);
 });
