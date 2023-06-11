@@ -18,7 +18,6 @@ export const prototypeChecker = (
 export const currentUser = new Promise((resolve) => {
   const { users, fluxDispatcher } = common;
   const currentUser = users.getCurrentUser();
-  console.log(currentUser);
   if (currentUser) resolve(currentUser);
   const resolveOnConnection = (): void => {
     fluxDispatcher.unsubscribe("CONNECTION_OPEN", resolveOnConnection);
