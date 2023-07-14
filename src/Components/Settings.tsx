@@ -107,7 +107,7 @@ export const Settings = () => {
           ...util.useSetting(SettingValues, "favIMG", defaultSettings.favIMG),
         }}>
         Favourite Images
-      </SwitchItem>      
+      </SwitchItem>
       <FormText.LABEL_BOLD
         {...{
           style: {
