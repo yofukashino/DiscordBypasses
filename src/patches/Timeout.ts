@@ -6,8 +6,9 @@ export const patchTimeouts = (): void => {
     if (
       args[1]?.toString().includes("BOT_CALL_IDLE_DISCONNECT") &&
       SettingValues.get("bandwidth", defaultSettings.bandwidth)
-    )
+    ) {
       return null;
+    }
     return res.call(instance, ...args);
   });
 };

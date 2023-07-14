@@ -256,4 +256,5 @@ export interface Settings {
   maxAccounts: boolean;
   clientThemes: boolean;
   plainFolderIcon: boolean;
+  favIMG: boolean;
 }

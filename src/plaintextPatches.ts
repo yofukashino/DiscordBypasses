@@ -1,3 +1,5 @@
+import { SettingValues } from "./index";
+import { defaultSettings } from "./lib/consts";
 import * as Types from "./types";
 export default [
   {
@@ -8,6 +10,17 @@ export default [
         replace: `$1Infinity$2`,
       },
     ],
+  },
+  {
+    find: "\\.gif($|\\?|#)",
+    replacements: SettingValues.get("favIMG", defaultSettings.favIMG)
+      ? [
+          {
+            match: "/\\.gif($|\\?|#)/i",
+            replace: "/\\.(gif|png|jpe?g|webp)($|\\?|#)/i, gg = console.log('gg')",
+          },
+        ]
+      : [],
   },
   {
     find: '"isPreview"',

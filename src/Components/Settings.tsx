@@ -101,6 +101,13 @@ export const Settings = () => {
         }}>
         Plain Folder Icon
       </SwitchItem>
+      <SwitchItem
+        {...{
+          note: "Adds star to still images too for favouriting them, treats them like GIFs.",
+          ...util.useSetting(SettingValues, "favIMG", defaultSettings.favIMG),
+        }}>
+        Favourite Images
+      </SwitchItem>      
       <FormText.LABEL_BOLD
         {...{
           style: {

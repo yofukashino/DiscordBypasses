@@ -14,4 +14,5 @@ export const defaultSettings = {
   clientThemes: true,
   gradientPreset: null,
   plainFolderIcon: true,
+  favIMG: true,
 };
