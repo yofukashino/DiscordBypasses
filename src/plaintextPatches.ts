@@ -1,5 +1,3 @@
-import { SettingValues } from "./index";
-import { defaultSettings } from "./lib/consts";
 import * as Types from "./types";
 export default [
   {
@@ -12,19 +10,12 @@ export default [
     ],
   },
   {
-    find: "\\.gif($|\\?|#)",
-    replacements: SettingValues.get("favIMG", defaultSettings.favIMG)
-      ? [
-          {
-            match: "/\\.gif($|\\?|#)/i",
-            replace: "/\\.(gif|png|jpe?g|webp)($|\\?|#)/i, gg = console.log('gg')",
-          },
-        ]
-      : [],
-  },
-  {
     find: '"isPreview"',
     replacements: [
+      {
+        match: /\n/g,
+        replace: "",
+      },
       {
         match: /({key:"gradientPreset",get:function\(\){)return (\w+)}}/,
         replace: `$1var bypassPreset=replugged?.plugins?.getExports('dev.tharki.DiscordBypasses')?.SettingValues?.get("gradientPreset", null);return $2=bypassPreset??$2}}, {key:"setGradientPreset",get:function(){return (e) => $2=e}}`,

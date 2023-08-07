@@ -1,6 +1,6 @@
 import { CurrentUser } from "../index";
 export const defaultSettings = {
-  NSFW: !CurrentUser?.nsfwAllowed,
+  NSFW: !CurrentUser?.nsfwAllowed ?? false,
   bandwidth: true,
   PTT: true,
   setBadge: true,

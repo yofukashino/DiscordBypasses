@@ -17,12 +17,13 @@ export const prototypeChecker = (
   );
 export const currentUser = new Promise((resolve) => {
   const { users, fluxDispatcher } = common;
-  const currentUser = users.getCurrentUser();
+  if (!users || !fluxDispatcher) resolve({});
+  const currentUser = users?.getCurrentUser();
   if (currentUser) resolve(currentUser);
   const resolveOnConnection = (): void => {
-    fluxDispatcher.unsubscribe("CONNECTION_OPEN", resolveOnConnection);
-    const currentUser = users.getCurrentUser();
+    fluxDispatcher?.unsubscribe("CONNECTION_OPEN", resolveOnConnection);
+    const currentUser = users?.getCurrentUser();
     if (currentUser) resolve(currentUser);
   };
-  fluxDispatcher.subscribe("CONNECTION_OPEN", resolveOnConnection);
+  fluxDispatcher?.subscribe("CONNECTION_OPEN", resolveOnConnection);
 });

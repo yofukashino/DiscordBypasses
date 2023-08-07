@@ -2,6 +2,7 @@ import { patchAccountSwitcherStrings } from "./AccountSwitcherStrings";
 import { patchClientThemeUpdate } from "./ClientThemeUpdate";
 import { patchIdle } from "./CurrentUserIdle";
 import { patchGuildVerificationStore } from "./GuildVerificationStore";
+import { patchImage } from "./Image";
 import { patchPTT } from "./Permission";
 import { patchBadges } from "./SetBadge";
 import { patchSpotifyPause } from "./SpotifyPause";
@@ -15,6 +16,7 @@ export const applyInjections = (): void => {
   patchClientThemeUpdate();
   patchIdle();
   patchGuildVerificationStore();
+  patchImage();
   patchPTT();
   patchBadges();
   patchSpotifyPause();
