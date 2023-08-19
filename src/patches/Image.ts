@@ -1,7 +1,7 @@
 import { webpack } from "replugged";
 import { PluginInjector, SettingValues } from "../index";
 import { defaultSettings } from "../lib/consts";
-import { ImageConstructorModule } from "../lib/requiredModules";
+import { GIFTagModule, ImageConstructorModule } from "../lib/requiredModules";
 import * as Types from "../types";
 export const patchImage = (): void => {
   const ImageConstructor = webpack.getFunctionBySource<
@@ -19,4 +19,8 @@ export const patchImage = (): void => {
     }
     return res(...args);
   });
+  const GIFTag = webpack.getFunctionKeyBySource(GIFTagModule, "gifTag");
+  PluginInjector.after(GIFTagModule, GIFTag, (_args, res) =>
+    SettingValues.get("favIMG", defaultSettings.favIMG) ? null : res,
+  );
 };
