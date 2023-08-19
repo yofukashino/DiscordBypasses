@@ -33,7 +33,6 @@ export const patchImage = (): void => {
       if (!SettingValues.get("favIMG", defaultSettings.favIMG) || instance.props.animated) {
         return res;
       }
-      console.log(res, instance);
       res.props.renderAccessory = () => {
         if (instance?.state?.hasMouseOver || instance?.state?.hasFocus) {
           return instance?.props?.renderAccessory?.();
