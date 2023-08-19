@@ -37,7 +37,6 @@ export const ClientThemesBackgroundStore = webpack.getByProps<Types.ClientThemes
   "setGradientPreset",
 ]);
 export const ImageConstructorModule = webpack.getBySource("\\.gif($|\\?|#)");
-export const { exports: GIFTagModule } = webpack.getBySource(".gifTag,", { raw: true }) ?? {};
 export const ClientThemeUpdate = webpack.getBySource<Types.GenericModule | string>(
   "updateTheme:function",
 );

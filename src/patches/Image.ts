@@ -1,7 +1,7 @@
 import { webpack } from "replugged";
 import { PluginInjector, SettingValues } from "../index";
 import { defaultSettings } from "../lib/consts";
-import { GIFTagModule, ImageConstructorModule } from "../lib/requiredModules";
+import { ImageConstructorModule } from "../lib/requiredModules";
 import * as Types from "../types";
 export const patchImage = (): void => {
   const ImageConstructor = webpack.getFunctionBySource<
@@ -19,8 +19,26 @@ export const patchImage = (): void => {
     }
     return res(...args);
   });
-  const GIFTag = webpack.getFunctionKeyBySource(GIFTagModule, "gifTag");
-  PluginInjector.after(GIFTagModule, GIFTag, (_args, res) =>
-    SettingValues.get("favIMG", defaultSettings.favIMG) ? null : res,
+  PluginInjector.after(
+    ImageConstructor.prototype,
+    "render",
+    (
+      _args,
+      res,
+      instance: {
+        props: { animated: boolean; renderAccessory?: Types.DefaultTypes.AnyFunction };
+        state: { hasFocus: boolean; hasMouseOver: boolean };
+      },
+    ) => {
+      if (!SettingValues.get("favIMG", defaultSettings.favIMG) || instance.props.animated) {
+        return res;
+      }
+      console.log(res, instance);
+      res.props.renderAccessory = () => {
+        if (instance?.state?.hasMouseOver || instance?.state?.hasFocus) {
+          return instance?.props?.renderAccessory?.();
+        }
+      };
+    },
   );
 };
