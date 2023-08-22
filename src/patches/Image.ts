@@ -30,14 +30,17 @@ export const patchImage = (): void => {
         state: { hasFocus: boolean; hasMouseOver: boolean };
       },
     ) => {
-      if (!SettingValues.get("favIMG", defaultSettings.favIMG) || instance.props.animated) {
+      if (!SettingValues.get("favIMG", defaultSettings.favIMG) || instance?.props?.animated) {
         return res;
       }
-      res.props.renderAccessory = () => {
-        if (instance?.state?.hasMouseOver || instance?.state?.hasFocus) {
-          return instance?.props?.renderAccessory?.();
-        }
-      };
+      if (res?.props) {
+        res.props.renderAccessory = () => {
+          if (instance?.state?.hasMouseOver || instance?.state?.hasFocus) {
+            return instance?.props?.renderAccessory?.();
+          }
+        };
+      }
+      return res;
     },
   );
 };

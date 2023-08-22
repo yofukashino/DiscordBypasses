@@ -18,12 +18,13 @@ export const patchStreamPreview = (): void => {
     if (!replacePreviewWith) return;
     return res(args[0], { thumbnail: replacePreviewWith }, args[2]);
   });
-  PluginInjector.instead(StreamPreviewStore, "getPreviewURL", (args, res) => {
+  PluginInjector.after(StreamPreviewStore, "getPreviewURL", (args, res: string) => {
     if (
       args[2] == CurrentUser.id &&
-      SettingValues.get("streamPreview", defaultSettings.streamPreview)
+      SettingValues.get("streamPreview", defaultSettings.streamPreview) &&
+      !res?.startsWith("https://")
     )
       return replacePreviewWith;
-    return res(...args);
+    return res;
   });
 };
