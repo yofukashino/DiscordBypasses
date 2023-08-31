@@ -35,3 +35,6 @@ Install Link:
 
 
 > For Contributing: [Make a pr thats all.]
+
+
+[<img src="https://sirio-network.com/flashcord/store/embed.png" width="512">](https://sirio-network.com/flashcord/store/discordbypasses)

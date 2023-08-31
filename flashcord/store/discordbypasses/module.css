@@ -1,0 +1,130 @@
+/* This is where your Module code goes. */
+
+/* Add anything in the containers if you wanna INJECT extra code in the FlashCore Modules
+If you wanna add an option or more things such as a Loading Animation or an alternative
+layout for say the members list then feel free to create your own @container. Make sure
+to pay attention to what you can modify due to the structure of Flashcord. It is recommended
+to have Flashcord's code on the side while developping your module. Anyways good luck friend! */
+/* https://sirio-network.com/flashcord/sid.css */
+
+/* 3-MGM_00-Control.css */
+@container FC-ControlPanel_PopUp (min-width: 0px) {
+    /* [DEFAULT] User or Guild Settings, PopUp Style */
+  }
+  
+  @container FC-ControlPanel_Full (min-width: 0px) {
+      /* User or Guild Settings, Fullscreen Style */
+  }
+  
+  /* 3-MGM_00-Control-MAT.css */
+  @container FC-SPGO_MAT (min-width: 0px) {
+    /* My Account Tab */
+  }
+  /* 3-MGM_00-Control-AT.css */
+  @container FC-SPGO_AT (min-width: 0px) {
+    /* Appearance Tab */
+  }
+  
+  /* 3-MGM_01-ChatEX.css */
+  @container FC-ChatSlide_SNDL (min-width: 0px) {
+    /* [DEFAULT] Channel Sliding */
+  }
+  
+  @container FC-ChatSlide_Legacy (min-width: 0px) {
+    /* [DEFAULT ON CBM] Channel Sliding */
+  }
+  
+  @container FC-MemberSlide (min-width: 0px) {
+    /* Sliding Members List */
+  }
+  
+  @container FC-GuildNav_Animated (min-width: 0px) {
+    /* [DEFAULT] Servers Glowing when Unread, animated */
+  }
+  
+  @container FC-GuildNav_Static (min-width: 0px) {
+    /* Servers Glowing when Unread, static colors */
+  }
+  
+  @container FC-GuildNav_Compact (min-width: 0px) {
+    /* [DEFAULT] Compact Server List */
+  }
+  
+  @container FC-GuildNav_Compact-Horizontal (min-width: 0px) {
+    /* Horizontal Compact Server List */
+  }
+  
+  @container FC-ChannelNav_Compact (min-width: 0px) {
+    /* Compact Channel List */
+  }
+  
+  @container FC-ChannelNav_Animated (min-width: 0px) {
+    /* [DEFAULT] Channel Unread/Mention Animated */
+  }
+  
+  @container FC-ChannelNav_Static (min-width: 0px) {
+    /* Channel Unread/Mention Static Colors */
+  }
+  
+  
+  /* 3-MGM_01-ChatEX.css */
+  @container FC-MessageSlide (min-width: 0px) {
+    /* Sliding New Message */
+  }
+  
+  @container FC-Jumbomojis (min-width: 0) {
+    /* Big Emojis */
+  }
+  
+  @container FC-ImagividZoom (min-width: 0px) {
+    /* Zooming on Hover Images when on Focused Modal */
+  }
+  
+  @container FC-Menthrepin (min-width: 0px) {
+    /* Big Pins, Mention and Threads PopUp */
+  }
+  
+  @container FC-Xearch (min-width: 0px) {
+    /* Big Message Search */
+  }
+  
+  @container FC-Stimogi (min-width: 0px) {
+    /* Big GIF, Emoji and GIF box */
+  }
+  
+  @container FC-Focus (min-width: 0px) {
+    /* BaseLayer Blur when there is something that can be focused */
+  }
+  
+  
+  /* 3-MGM_02-OTUI_Base.css */
+  @container FC-FlexGrid (min-width: 0px) {
+    /* Serves the Plugins, Themes, Friends and pop up roles list to be no longer a list */
+  }
+  
+  
+  /* 3-MGM_02-OTUI_Pop.css */
+  @container FC-UPMO (min-width: 0px) {
+    /* Focused User Modal Redesign */
+  }
+  
+  @container FC-UPRAL (min-width: 0px) {
+    /* Bigger PopUp Role Addition List */
+  }
+  
+  
+  /* 4-SM_UnNitrofy.css */
+  @container FC-DeNitrofy (min-width: 0px) {
+    /* EVERY Code about trying to remove the screaming Nitro things */
+  }
+  
+  
+  /* 5-ChatEffects_CD.css */
+  @container FC-ChatEffects_Animated (min-width: 0px) {
+    /* [DEFAULT] Chat Effects are Animated */
+  }
+  
+  @container FC-ChatEffects_Text (min-width: 0px) {
+    /* Chat's Effects are displayed as text */
+  }
+  
