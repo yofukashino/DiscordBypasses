@@ -89,6 +89,13 @@ export const Settings = () => {
       </SwitchItem>
       <SwitchItem
         {...{
+          note: "Stops Discord from setting your presence to idle, when you leave discord alone.",
+          ...util.useSetting(SettingValues, "noAFK", defaultSettings.noAFK),
+        }}>
+        No Idle
+      </SwitchItem>
+      <SwitchItem
+        {...{
           note: "Remove need of nitro from client themes which is beta feature.",
           ...util.useSetting(SettingValues, "clientThemes", defaultSettings.clientThemes),
         }}>
