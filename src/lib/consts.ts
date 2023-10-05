@@ -1,6 +1,9 @@
-import { CurrentUser } from "../index";
+import { common } from "replugged";
+const { users: UltimateUserStore } = common;
 export const defaultSettings = {
-  NSFW: !CurrentUser?.nsfwAllowed ?? false,
+  get NSFW() {
+    return !UltimateUserStore.getCurrentUser()?.nsfwAllowed ?? false;
+  },
   bandwidth: true,
   PTT: true,
   setBadge: true,

@@ -1,8 +1,9 @@
-import { components, util } from "replugged";
-import { CurrentUser, PluginLogger, SettingValues } from "../index";
+import { common, components, util } from "replugged";
+import { PluginLogger, SettingValues } from "../index";
 import { defaultSettings } from "../lib/consts";
 import { ImagePickerItem } from "./ImagePicker";
 import * as Types from "../types";
+const { users: UltimateUserStore } = common;
 const { SwitchItem, FormText, Divider } = components;
 export const registerSettings = (): void => {
   for (const key in defaultSettings) {
@@ -17,7 +18,9 @@ export const Settings = () => {
     <div>
       <SwitchItem
         {...{
-          disabled: CurrentUser?.nsfwAllowed && !SettingValues.get("NSFW", defaultSettings.NSFW),
+          disabled:
+            UltimateUserStore.getCurrentUser()?.nsfwAllowed &&
+            !SettingValues.get("NSFW", defaultSettings.NSFW),
           note: "Bypasses the channel restriction when you're too young to enter channels marked as NSFW.",
           ...util.useSetting(SettingValues, "NSFW", defaultSettings.NSFW),
         }}>

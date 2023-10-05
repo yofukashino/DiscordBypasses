@@ -1,4 +1,3 @@
-import { common } from "replugged";
 import * as Types from "../types";
 
 export const isObject = (testMaterial: unknown): boolean =>
@@ -15,15 +14,3 @@ export const prototypeChecker = (
   Protos.every((p: string) =>
     Object.values(ModuleExports).some((m: Types.DefaultTypes.AnyFunction) => m?.prototype?.[p]),
   );
-export const currentUser = new Promise((resolve) => {
-  const { users, fluxDispatcher } = common;
-  if (!users || !fluxDispatcher) resolve({});
-  const currentUser = users?.getCurrentUser();
-  if (currentUser) resolve(currentUser);
-  const resolveOnConnection = (): void => {
-    fluxDispatcher?.unsubscribe("CONNECTION_OPEN", resolveOnConnection);
-    const currentUser = users?.getCurrentUser();
-    if (currentUser) resolve(currentUser);
-  };
-  fluxDispatcher?.subscribe("CONNECTION_OPEN", resolveOnConnection);
-});

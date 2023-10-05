@@ -1,8 +1,4 @@
-import { Injector, Logger, common, settings } from "replugged";
-export const { users: UserStore } = common;
-import * as Utils from "./lib/utils";
-import * as Types from "./types";
-export const CurrentUser = (await Utils.currentUser) as Types.User;
+import { Injector, Logger, settings } from "replugged";
 import { defaultSettings } from "./lib/consts";
 export const PluginLogger = Logger.plugin("DiscordBypasses");
 export const SettingValues = await settings.init("dev.tharki.DiscordBypasses", defaultSettings);

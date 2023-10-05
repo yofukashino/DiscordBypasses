@@ -209,7 +209,6 @@ export interface StreamPreviewStore {
 export interface ClientThemesBackgroundStore {
   getLinearGradient: DefaultTypes.AnyFunction;
   initializev;
-  __getLocalVars: DefaultTypes.AnyFunction;
   constructor: DefaultTypes.AnyFunction;
   gradientAngle: number | null | undefined;
   gradientPreset: object | null | undefined;
@@ -258,3 +257,5 @@ export interface Settings {
   plainFolderIcon: boolean;
   favIMG: boolean;
 }
+
+export * as default from "./types";

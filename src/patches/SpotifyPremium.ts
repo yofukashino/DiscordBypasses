@@ -21,11 +21,10 @@ export const patchSpotifyPremium = (): void => {
     SpotifyPremiumCheck,
     /\.socket\.isPremium/,
   ) as unknown as string;
-  PluginInjector.instead(
+  PluginInjector.after(
     SpotifyPremiumCheck,
     isPremium,
-    (args, res) =>
-      SettingValues.get("spotifyPremium", defaultSettings.spotifyPremium) || res(...args),
+    (_args, res) => SettingValues.get("spotifyPremium", defaultSettings.spotifyPremium) || res,
   );
   const isPremiumPromise = webpack.getFunctionKeyBySource(
     SpotifyPremiumCheck,
