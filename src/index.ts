@@ -16,3 +16,5 @@ export const stop = (): void => {
 };
 
 export { Settings } from "./Components/Settings";
+
+export { _getGradientPreset, _getTheme, _getisPreview } from "./plaintextFunctions";
