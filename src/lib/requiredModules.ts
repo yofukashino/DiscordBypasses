@@ -27,3 +27,7 @@ export const ClientThemeUpdate = webpack.getByProps<{
 export const GradientPresets = webpack.getByProps<{
   BACKGROUND_GRADIENT_PRESETS_MAP: Record<string, string>;
 }>("BACKGROUND_GRADIENT_PRESETS_MAP");
+export const { exports: FolderConstructor } = webpack.getBySource(
+  ".Messages.GUILD_FOLDER_TOOLTIP_A11Y_LABEL",
+  { raw: true },
+);
