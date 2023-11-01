@@ -1,8 +1,7 @@
-import { common, components } from "replugged";
+import { React, toast as Toasts } from "replugged/common";
+import { FormItem } from "replugged/components";
 import { CloseButton } from "./CloseButton";
-import * as Types from "../types";
-const { toast: Toasts, React } = common;
-const { FormItem } = components;
+import Types from "../types";
 
 export class ImagePickerItem extends React.Component<
   Types.ImagePickerProps,

@@ -1,9 +1,9 @@
 import { PluginInjector, SettingValues } from "../index";
 import { defaultSettings } from "../lib/consts";
-import { Timeout } from "../lib/requiredModules";
-export const patchTimeouts = (): void => {
+import { TimeoutManager } from "../lib/requiredModules";
+export default (): void => {
   PluginInjector.instead(
-    Timeout.prototype,
+    TimeoutManager.Timeout.prototype,
     "start",
     (args: [string | number, string], res, instance: { start: () => void; stop: () => void }) => {
       if (

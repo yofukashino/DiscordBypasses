@@ -1,4 +1,3 @@
-import { webpack } from "replugged";
 import { PluginInjector, SettingValues } from "../index";
 import { defaultSettings } from "../lib/consts";
 import {
@@ -6,14 +5,10 @@ import {
   ClientThemesBackgroundStore,
   GradientPresets,
 } from "../lib/requiredModules";
-import * as Types from "../types";
-export const patchClientThemeUpdate = (): void => {
-  const updateTheme = webpack.getFunctionKeyBySource<string>(
-    ClientThemeUpdate as string,
-    "backgroundGradientPresetId",
-  );
-  PluginInjector.instead(ClientThemeUpdate as Types.GenericModule, updateTheme, (args, res) => {
-    const gradientPreset = GradientPresets[args[0].backgroundGradientPresetId];
+export default (): void => {
+  PluginInjector.instead(ClientThemeUpdate, "saveClientTheme", (args, res) => {
+    const gradientPreset =
+      GradientPresets.BACKGROUND_GRADIENT_PRESETS_MAP[args[0].backgroundGradientPresetId];
     if (!gradientPreset || !SettingValues.get("clientThemes", defaultSettings.clientThemes)) {
       SettingValues.delete("gradientPreset");
       ClientThemesBackgroundStore.setGradientPreset(

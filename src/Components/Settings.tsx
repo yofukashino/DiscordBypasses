@@ -1,10 +1,12 @@
-import { common, components, util } from "replugged";
+import { util } from "replugged";
+import { users as UltimateUserStore } from "replugged/common";
+import { Divider, FormText, SwitchItem } from "replugged/components";
+
 import { PluginLogger, SettingValues } from "../index";
 import { defaultSettings } from "../lib/consts";
 import { ImagePickerItem } from "./ImagePicker";
-import * as Types from "../types";
-const { users: UltimateUserStore } = common;
-const { SwitchItem, FormText, Divider } = components;
+import Types from "../types";
+
 export const registerSettings = (): void => {
   for (const key in defaultSettings) {
     if (SettingValues.has(key as keyof Types.Settings)) return;

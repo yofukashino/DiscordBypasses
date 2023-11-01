@@ -1,6 +1,6 @@
 export { types as DefaultTypes } from "replugged";
 import { types as DefaultTypes } from "replugged";
-export { ReactElement } from "react";
+import { Store } from "replugged/dist/renderer/modules/common/flux";
 export interface GenericModule extends Record<string, DefaultTypes.AnyFunction> {}
 export interface ElectronModule {
   architecture: string;
@@ -86,37 +86,6 @@ export interface ElectronModule {
   undetectPid: DefaultTypes.AnyFunction;
   updateCrashReporter: DefaultTypes.AnyFunction;
 }
-export interface User {
-  avatar: string;
-  avatarDecoration: undefined | string;
-  bot: boolean;
-  desktop: boolean;
-  discriminator: string;
-  email: null | string;
-  flags: number;
-  guildMemberAvatars: {
-    [key: number]: string;
-  };
-  hasBouncedEmail: boolean;
-  hasFlag: DefaultTypes.AnyFunction;
-  id: string;
-  isStaff: DefaultTypes.AnyFunction;
-  isStaffPersonal: DefaultTypes.AnyFunction;
-  mfaEnabled: boolean;
-  mobile: boolean;
-  nsfwAllowed: undefined | boolean;
-  personalConnectionId: null | string;
-  phone: null | string;
-  premiumType: undefined | number;
-  premiumUsageFlags: number;
-  publicFlags: number;
-  purchasedFlags: number;
-  system: boolean;
-  username: string;
-  verified: boolean;
-  createdAt: Date;
-  tag: string;
-}
 export interface Permissions {
   ADD_REACTIONS: bigint;
   ADMINISTRATOR: bigint;
@@ -168,6 +137,11 @@ export interface Permissions {
 }
 export interface DiscordConstants {
   Permissions: Permissions;
+  VerificationCriteria: { ACCOUNT_AGE: number; MEMBER_AGE: number };
+}
+export interface ImageConstructor {
+  IMAGE_GIF_RE: RegExp;
+  default: { isAnimated: DefaultTypes.AnyFunction } & DefaultTypes.AnyFunction;
 }
 export interface ClientThemesExperimentConfig {
   getCurrentConfig: () => {
@@ -175,15 +149,33 @@ export interface ClientThemesExperimentConfig {
     hasSidebarEditor: boolean;
   };
 }
-export interface Timeout extends DefaultTypes.AnyFunction {
-  prototype: TimeoutPrototype;
+export interface TimeoutManager {
+  DelayedCall: DefaultTypes.AnyFunction;
+  Interval: DefaultTypes.AnyFunction;
+  Timeout: DefaultTypes.AnyFunction;
+  timeoutPromise: DefaultTypes.AnyFunction;
 }
-export interface TimeoutPrototype {
-  isStarted: DefaultTypes.AnyFunction;
-  start: DefaultTypes.AnyFunction;
-  stop: DefaultTypes.AnyFunction;
+export interface SpotifyProtocoalStore {
+  SpotifyAPI: {
+    get: DefaultTypes.AnyFunction;
+    put: DefaultTypes.AnyFunction;
+  };
+  fetchIsSpotifyProtocolRegistered: DefaultTypes.AnyFunction;
+  getAccessToken: DefaultTypes.AnyFunction;
+  getDevices: DefaultTypes.AnyFunction;
+  getProfile: DefaultTypes.AnyFunction;
+  pause: DefaultTypes.AnyFunction;
+  play: DefaultTypes.AnyFunction;
+  setActiveDevice: DefaultTypes.AnyFunction;
+  subscribePlayerStateNotifications: DefaultTypes.AnyFunction;
 }
-export interface PermissionStore {
+export interface SpotifyChecks {
+  ensureSpotifyPlayable: DefaultTypes.AnyFunction;
+  ensureSpotifyPremium: DefaultTypes.AnyFunction;
+  isSpotifyPlayable: DefaultTypes.AnyFunction;
+  isSpotifyPremium: DefaultTypes.AnyFunction;
+}
+export interface PermissionStore extends Store {
   can: DefaultTypes.AnyFunction;
   canAccessGuildSettings: DefaultTypes.AnyFunction;
   canBasicChannel: DefaultTypes.AnyFunction;
@@ -201,14 +193,13 @@ export interface PermissionStore {
   isRoleHigher: DefaultTypes.AnyFunction;
   clearVars: DefaultTypes.AnyFunction;
 }
-export interface StreamPreviewStore {
+export interface ApplicationStreamPreviewStore extends Store {
   getIsPreviewLoading: DefaultTypes.AnyFunction;
   getPreviewURL: DefaultTypes.AnyFunction;
   getPreviewURLForStreamKey: DefaultTypes.AnyFunction;
 }
-export interface ClientThemesBackgroundStore {
+export interface ClientThemesBackgroundStore extends Store {
   getLinearGradient: DefaultTypes.AnyFunction;
-  initializev;
   constructor: DefaultTypes.AnyFunction;
   gradientAngle: number | null | undefined;
   gradientPreset: object | null | undefined;
@@ -217,7 +208,7 @@ export interface ClientThemesBackgroundStore {
   mobilePendingThemeIndex: number | null | undefined;
   setGradientPreset: DefaultTypes.AnyFunction;
 }
-export interface CurrentUserIdle {
+export interface IdleStore extends Store {
   getIdleSince: DefaultTypes.AnyFunction;
   isAFK: DefaultTypes.AnyFunction;
   isIdle: DefaultTypes.AnyFunction;

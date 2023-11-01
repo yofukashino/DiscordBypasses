@@ -1,50 +1,29 @@
 import { webpack } from "replugged";
-import * as Utils from "./utils";
-import * as Types from "../types";
-export const TimeoutModule = webpack.getModule((m) =>
-  Utils.prototypeChecker(m?.exports, ["start", "stop", "isStarted"]),
-);
-export const Timeout = Object.values(TimeoutModule).find((m: Types.DefaultTypes.AnyFunction) =>
-  ["start", "stop", "isStarted"].every((proto) => m?.prototype?.[proto]),
-) as Types.Timeout;
+import Types from "../types";
+export const TimeoutManager = webpack.getByProps<Types.TimeoutManager>("Timeout", "DelayedCall");
 
-export const DiscordConstantsModule =
-  webpack.getBySource<Types.DefaultTypes.ObjectExports>(".MFA_WARNING=");
+export const DiscordConstants = webpack.getByProps<Types.DiscordConstants>("VerificationCriteria");
 
-export const DiscordConstants = {
-  Permissions: webpack.getExportsForProps(DiscordConstantsModule, [
-    "ADMINISTRATOR",
-    "MANAGE_GUILD",
-  ]),
-} as Types.DiscordConstants;
-export const AccountSwitcherStrings = webpack.getBySource<Types.DefaultTypes.ObjectExports>(
-  /multiaccount_cta_tooltip_seen/,
-);
-export const PermissionStore = webpack.getByProps<Types.PermissionStore>("getChannelPermissions");
+export const AccountSwitcherStrings = webpack.getByProps<{ MAX_ACCOUNTS: number }>("MAX_ACCOUNTS");
+export const PermissionStore = webpack.getByStoreName<Types.PermissionStore>("PermissionStore");
 export const ElectronModule = webpack.getByProps<Types.ElectronModule>("setBadge");
-export const StreamPreviewStore = webpack.getByProps<Types.StreamPreviewStore>("getPreviewURL");
-export const CurrentUserIdle = webpack.getByProps<Types.CurrentUserIdle>([
-  "getIdleSince",
-  "isIdle",
-  "isAFK",
-]);
-export const SpotifyProtocoalStore =
-  webpack.getBySource<Types.GenericModule>(/"SPOTIFY_PROFILE_UPDATE"/);
-export const SpotifyPremiumCheck = webpack.getBySource<Types.GenericModule>(
-  /"spotify account is not premium"/,
+export const ApplicationStreamPreviewStore =
+  webpack.getByStoreName<Types.ApplicationStreamPreviewStore>("ApplicationStreamPreviewStore");
+export const IdleStore = webpack.getByStoreName<Types.IdleStore>("IdleStore");
+export const SpotifyProtocoalStore = webpack.getByProps<Types.SpotifyProtocoalStore>(
+  "getProfile",
+  "SpotifyAPI",
 );
-export const ClientThemesBackgroundStore = webpack.getByProps<Types.ClientThemesBackgroundStore>([
-  "isPreview",
-  "gradientPreset",
-  "setGradientPreset",
-]);
-export const ImageConstructorModule = webpack.getBySource("\\.gif($|\\?|#)");
-export const ClientThemeUpdate = webpack.getBySource<Types.GenericModule | string>(
-  "updateTheme:function",
+export const SpotifyChecks = webpack.getByProps<Types.SpotifyChecks>(
+  "isSpotifyPremium",
+  "ensureSpotifyPremium",
 );
-export const GradientPresetModule = webpack.getBySource(
-  ".Messages.CLIENT_THEMES_GRADIENT_MINT_APPLE",
-);
-export const GradientPresets = Object.values(GradientPresetModule).find(
-  (presets) => !Array.isArray(presets),
-);
+export const ClientThemesBackgroundStore =
+  webpack.getByStoreName<Types.ClientThemesBackgroundStore>("ClientThemesBackgroundStore");
+export const ImageConstructor = webpack.getByProps<Types.ImageConstructor>("IMAGE_GIF_RE");
+export const ClientThemeUpdate = webpack.getByProps<{
+  saveClientTheme: Types.DefaultTypes.AnyFunction;
+}>("saveClientTheme");
+export const GradientPresets = webpack.getByProps<{
+  BACKGROUND_GRADIENT_PRESETS_MAP: Record<string, string>;
+}>("BACKGROUND_GRADIENT_PRESETS_MAP");

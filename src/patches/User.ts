@@ -1,10 +1,8 @@
-import { common } from "replugged";
+import { users as UltimateUserStore } from "replugged/common";
 import { PluginInjector, SettingValues } from "../index";
 import { defaultSettings } from "../lib/consts";
 
-const { users: UltimateUserStore } = common;
-
-export const bypassNSFW = (): void => {
+export default (): void => {
   PluginInjector.after(UltimateUserStore, "getCurrentUser", (_args, res) => {
     if (res?.nsfwAllowed === false)
       res.nsfwAllowed = SettingValues.get("NSFW", defaultSettings.NSFW);

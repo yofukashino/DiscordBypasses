@@ -1,12 +1,8 @@
 import { SettingValues } from "../index";
 import { defaultSettings } from "../lib/consts";
-import { DiscordConstantsModule } from "../lib/requiredModules";
-import * as Utils from "../lib/utils";
-export const patchGuildVerificationStore = (): void => {
-  const GuildVerificationConst = Object.entries(DiscordConstantsModule).find(
-    ([_, value]: [string, object]) => Utils.hasProps(value, ["ACCOUNT_AGE", "MEMBER_AGE"]),
-  )[0];
-  Object.defineProperty(DiscordConstantsModule, GuildVerificationConst, {
+import { DiscordConstants } from "../lib/requiredModules";
+export default (): void => {
+  Object.defineProperty(DiscordConstants, "VerificationCriteria", {
     get: () => {
       return SettingValues.get("verification", defaultSettings.verification)
         ? { ACCOUNT_AGE: 0, MEMBER_AGE: 0 }

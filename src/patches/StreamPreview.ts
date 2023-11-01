@@ -1,9 +1,9 @@
-import { common } from "replugged";
+import { users as UltimateUserStore } from "replugged/common";
 import { PluginInjector, PluginLogger, SettingValues } from "../index";
 import { defaultSettings } from "../lib/consts";
-import { ElectronModule, StreamPreviewStore } from "../lib/requiredModules";
-const { users: UltimateUserStore } = common;
-export const patchStreamPreview = (): void => {
+import { ApplicationStreamPreviewStore, ElectronModule } from "../lib/requiredModules";
+
+export default (): void => {
   if (!SettingValues.get("streamPreview", defaultSettings.streamPreview)) return;
   const replacePreviewWith =
     SettingValues.get("fakePreview", defaultSettings.fakePreview) !== ""
@@ -20,7 +20,7 @@ export const patchStreamPreview = (): void => {
     if (!replacePreviewWith) return;
     return res(args[0], { thumbnail: replacePreviewWith }, args[2]);
   });
-  PluginInjector.after(StreamPreviewStore, "getPreviewURL", (args, res: string) => {
+  PluginInjector.after(ApplicationStreamPreviewStore, "getPreviewURL", (args, res: string) => {
     if (
       args[2] == UltimateUserStore.getCurrentUser()?.id &&
       SettingValues.get("streamPreview", defaultSettings.streamPreview) &&

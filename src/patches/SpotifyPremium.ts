@@ -1,14 +1,10 @@
-import { common, webpack } from "replugged";
+import { common } from "replugged";
 import { PluginInjector, SettingValues } from "../index";
 import { defaultSettings } from "../lib/consts";
-import { SpotifyPremiumCheck, SpotifyProtocoalStore } from "../lib/requiredModules";
+import { SpotifyChecks, SpotifyProtocoalStore } from "../lib/requiredModules";
 const { fluxDispatcher: FluxDispatcher } = common;
-export const patchSpotifyPremium = (): void => {
-  const ProfileUpdate = webpack.getFunctionKeyBySource(
-    SpotifyProtocoalStore,
-    /"SPOTIFY_PROFILE_UPDATE"/,
-  ) as unknown as string;
-  PluginInjector.instead(SpotifyProtocoalStore, ProfileUpdate, (args, res) =>
+export default (): void => {
+  PluginInjector.instead(SpotifyProtocoalStore, "getProfile", (args, res) =>
     SettingValues.get("spotifyPremium", defaultSettings.spotifyPremium)
       ? FluxDispatcher.dispatch({
           type: "SPOTIFY_PROFILE_UPDATE",
@@ -17,20 +13,12 @@ export const patchSpotifyPremium = (): void => {
         })
       : res(...args),
   );
-  const isPremium = webpack.getFunctionKeyBySource(
-    SpotifyPremiumCheck,
-    /\.socket\.isPremium/,
-  ) as unknown as string;
   PluginInjector.after(
-    SpotifyPremiumCheck,
-    isPremium,
+    SpotifyChecks,
+    "isSpotifyPremium",
     (_args, res) => SettingValues.get("spotifyPremium", defaultSettings.spotifyPremium) || res,
   );
-  const isPremiumPromise = webpack.getFunctionKeyBySource(
-    SpotifyPremiumCheck,
-    /Promise\.reject.*"spotify account is not premium"/,
-  ) as unknown as string;
-  PluginInjector.instead(SpotifyPremiumCheck, isPremiumPromise, (args, res) =>
+  PluginInjector.instead(SpotifyChecks, "ensureSpotifyPremium", (args, res) =>
     SettingValues.get("spotifyPremium", defaultSettings.spotifyPremium)
       ? new Promise((resolve) => resolve(true))
       : res(...args),

@@ -1,5 +1,5 @@
-import { common } from "replugged";
-const { users: UltimateUserStore } = common;
+import { users as UltimateUserStore } from "replugged/common";
+
 export const defaultSettings = {
   get NSFW() {
     return !UltimateUserStore.getCurrentUser()?.nsfwAllowed ?? false;
