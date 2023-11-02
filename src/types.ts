@@ -1,5 +1,6 @@
 export { types as DefaultTypes } from "replugged";
 import { types as DefaultTypes } from "replugged";
+export { Tree } from "replugged/dist/renderer/util";
 import { Store } from "replugged/dist/renderer/modules/common/flux";
 export interface GenericModule extends Record<string, DefaultTypes.AnyFunction> {}
 export interface ElectronModule {
