@@ -92,15 +92,17 @@ export const Settings = () => {
         {...util.useSetting(SettingValues, "favIMG", defaultSettings.favIMG)}>
         Favorite Images
       </SwitchItem>
-      <SelectItem
-        {...util.useSetting(SettingValues, "ringtone", defaultSettings.ringtone)}
-        options={[
-          { label: "Default Ringtone", value: "call_ringing.mp3" },
-          { label: "Secret Ringtone", value: "call_ringing_beat.mp3" },
-          { label: "Halloween Ringtone", value: "call_ringing_halloween.mp3" },
-        ]}>
-        Special Ringtone
-      </SelectItem>
+      {
+        <SelectItem
+          {...util.useSetting(SettingValues, "ringtone", defaultSettings.ringtone)}
+          options={[
+            { label: "Default Ringtone", value: "call_ringing.mp3" },
+            { label: "Secret Ringtone", value: "call_ringing_beat.mp3" },
+            { label: "Halloween Ringtone", value: "call_ringing_halloween.mp3" },
+          ]}>
+          Special Ringtone
+        </SelectItem>
+      }
       <FormText.LABEL_BOLD
         style={{
           textAlign: "center",
