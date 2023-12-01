@@ -31,3 +31,10 @@ export const { exports: FolderConstructor } = webpack.getBySource(
   ".Messages.GUILD_FOLDER_TOOLTIP_A11Y_LABEL",
   { raw: true },
 );
+export const ImageInput = webpack.getByProps<{
+  default: React.ComponentClass<{ onChange: (...args: unknown[]) => void }>;
+  processImage: Types.DefaultTypes.AnyFunction;
+}>("processImage");
+export const AudioResolverPromise = webpack.waitForModule<{
+  exports: Types.DefaultTypes.AnyFunction;
+}>(webpack.filters.bySource("./mute.mp3"), { raw: true });

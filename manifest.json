@@ -3,16 +3,16 @@
   "name": "DiscordBypasses",
   "description": "A collection of bypasses and utilities. Take a look in the plugin's settings for the features.",
   "image": "https://i.imgur.com/Tqcr5zs.png",
-  "source": "https://github.com/Tharki-God/DiscordBypasses",
+  "source": "https://github.com/TharkiDev/DiscordBypasses",
   "author": {
     "name": "Ahlawat",
     "discordID": "1025214794766221384",
-    "github": "Tharki-God"
+    "github": "TharkiDev"
   },
   "version": "1.2.3",
   "updater": {
     "type": "github",
-    "id": "Tharki-God/DiscordBypasses"
+    "id": "TharkiDev/DiscordBypasses"
   },
   "license": "MIT",
   "type": "replugged-plugin",

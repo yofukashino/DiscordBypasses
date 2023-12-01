@@ -1,4 +1,5 @@
 import patchAccountSwitcherStrings from "./AccountSwitcherStrings";
+import patchAudioResolver from "./AudioResolver";
 import patchClientThemeUpdate from "./ClientThemeUpdate";
 import patchFolder from "./Folder";
 import patchGuildVerificationStore from "./GuildVerificationStore";
@@ -13,6 +14,7 @@ import bypassNSFW from "./User";
 
 export const applyInjections = (): void => {
   patchAccountSwitcherStrings();
+  void patchAudioResolver();
   patchClientThemeUpdate();
   patchFolder();
   patchGuildVerificationStore();
@@ -25,3 +27,5 @@ export const applyInjections = (): void => {
   patchTimeouts();
   bypassNSFW();
 };
+
+export default { applyInjections };

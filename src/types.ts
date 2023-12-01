@@ -214,12 +214,7 @@ export interface IdleStore extends Store {
   isAFK: DefaultTypes.AnyFunction;
   isIdle: DefaultTypes.AnyFunction;
 }
-export interface CloseButtonProps {
-  size?: string;
-  className?: string;
-  style?: object;
-  onClick?: () => void;
-}
+
 export interface ImagePickerProps {
   title?: string;
   note: string;
@@ -229,7 +224,6 @@ export interface ImagePickerProps {
   onChange: (newvalue: string) => void;
 }
 export interface ImagePickerState {
-  showClearButton: boolean;
   img: string;
 }
 
@@ -248,6 +242,7 @@ export interface Settings {
   clientThemes: boolean;
   plainFolderIcon: boolean;
   favIMG: boolean;
+  ringtone: string;
 }
 
 export * as default from "./types";

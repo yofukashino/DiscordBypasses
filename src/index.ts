@@ -5,10 +5,10 @@ export const SettingValues = await settings.init("dev.tharki.DiscordBypasses", d
 export const PluginInjector = new Injector();
 
 import { registerSettings } from "./Components/Settings";
-import { applyInjections } from "./patches/index";
+import Injection from "./patches/index";
 export const start = (): void => {
   registerSettings();
-  applyInjections();
+  Injection.applyInjections();
 };
 
 export const stop = (): void => {
