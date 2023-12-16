@@ -99,6 +99,7 @@ export const Settings = () => {
             { label: "Default Ringtone", value: "call_ringing.mp3" },
             { label: "Secret Ringtone", value: "call_ringing_beat.mp3" },
             { label: "Halloween Ringtone", value: "call_ringing_halloween.mp3" },
+            { label: "Snowsgiving Ringtone", value: "call_ringing_snowsgiving.mp3" },
           ]}>
           Special Ringtone
         </SelectItem>
