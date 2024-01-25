@@ -2,7 +2,8 @@ import { users as UltimateUserStore } from "replugged/common";
 
 export const defaultSettings = {
   get NSFW() {
-    return !UltimateUserStore.getCurrentUser()?.nsfwAllowed ?? false;
+    // @ts-expect-error uum i cant think of a better way?
+    return !UltimateUserStore.getCurrentUser(true)?.nsfwAllowed ?? false;
   },
   bandwidth: true,
   PTT: true,
