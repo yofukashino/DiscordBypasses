@@ -38,3 +38,4 @@ export const ImageInput = webpack.getByProps<{
 export const AudioResolverPromise = webpack.waitForModule<{
   exports: Types.DefaultTypes.AnyFunction;
 }>(webpack.filters.bySource("./mute.mp3"), { raw: true });
+export const SpamUtils = webpack.getByProps<Types.SpamUtils>("isSpam", "isSpamSupported");

@@ -92,18 +92,21 @@ export const Settings = () => {
         {...util.useSetting(SettingValues, "favIMG", defaultSettings.favIMG)}>
         Favorite Images
       </SwitchItem>
-      {
-        <SelectItem
-          {...util.useSetting(SettingValues, "ringtone", defaultSettings.ringtone)}
-          options={[
-            { label: "Default Ringtone", value: "call_ringing.mp3" },
-            { label: "Secret Ringtone", value: "call_ringing_beat.mp3" },
-            { label: "Halloween Ringtone", value: "call_ringing_halloween.mp3" },
-            { label: "Snowsgiving Ringtone", value: "call_ringing_snowsgiving.mp3" },
-          ]}>
-          Special Ringtone
-        </SelectItem>
-      }
+      <SelectItem
+        {...util.useSetting(SettingValues, "ringtone", defaultSettings.ringtone)}
+        options={[
+          { label: "Default Ringtone", value: "call_ringing.mp3" },
+          { label: "Secret Ringtone", value: "call_ringing_beat.mp3" },
+          { label: "Halloween Ringtone", value: "call_ringing_halloween.mp3" },
+          { label: "Snowsgiving Ringtone", value: "call_ringing_snowsgiving.mp3" },
+        ]}>
+        Special Ringtone
+      </SelectItem>
+      <SwitchItem
+        note="Show none of the users as spam."
+        {...util.useSetting(SettingValues, "spam", defaultSettings.spam)}>
+        No Spam
+      </SwitchItem>
       <FormText.LABEL_BOLD
         style={{
           textAlign: "center",

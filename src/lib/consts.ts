@@ -20,4 +20,5 @@ export const defaultSettings = {
   plainFolderIcon: true,
   favIMG: true,
   ringtone: "call_ringing_beat.mp3",
+  spam: true,
 };

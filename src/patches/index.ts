@@ -7,6 +7,7 @@ import patchIdle from "./IdleStore";
 import patchImage from "./Image";
 import patchPTT from "./Permission";
 import patchBadges from "./SetBadge";
+import patchSpamUtils from "./SpamUtils";
 import patchSpotifyPremium from "./SpotifyPremium";
 import patchStreamPreview from "./StreamPreview";
 import patchTimeouts from "./Timeout";
@@ -22,6 +23,7 @@ export const applyInjections = (): void => {
   patchImage();
   patchPTT();
   patchBadges();
+  patchSpamUtils();
   patchSpotifyPremium();
   patchStreamPreview();
   patchTimeouts();

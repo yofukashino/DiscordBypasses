@@ -4,7 +4,7 @@ import { defaultSettings } from "../lib/consts";
 
 export default (): void => {
   PluginInjector.after(UltimateUserStore, "getCurrentUser", ([original]: [boolean], res) => {
-    if (!original && res?.nsfwAllowed === false)
+    if (!original && res && !res?.nsfwAllowed)
       res.nsfwAllowed = SettingValues.get("NSFW", defaultSettings.NSFW);
     return res;
   });

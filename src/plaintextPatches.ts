@@ -20,7 +20,7 @@ export default [
       {
         match: /(get\s*isPreview\s*\(\s*\)\s*{return\s*(\w+))\s*}/,
         replace: (_, prefix: string, orignal: string) =>
-          `${prefix}=replugged?.plugins?.getExports('dev.tharki.DiscordBypasses')?._getisPreview(${orignal})}`,
+          `${prefix}=replugged?.plugins?.getExports('dev.tharki.DiscordBypasses')?._getIsPreview(${orignal})}`,
       },
     ],
   },
