@@ -17,7 +17,7 @@ import bypassNSFW from "./User";
 export const applyInjections = async (): Promise<void> => {
   await Modules.loadModules();
   injectAccountSwitcherStrings();
-  injectAudioResolver();
+  void injectAudioResolver();
   injectClientThemeUpdate();
   injectFolder();
   injectGuildVerificationStore();
