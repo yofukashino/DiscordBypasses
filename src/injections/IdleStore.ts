@@ -1,7 +1,8 @@
 import { PluginInjector, SettingValues } from "../index";
 import { defaultSettings } from "../lib/consts";
-import { IdleStore } from "../lib/requiredModules";
+import Modules from "../lib/requiredModules";
 export default (): void => {
+  const { IdleStore } = Modules;
   PluginInjector.instead(IdleStore, "getIdleSince", (args, res) =>
     SettingValues.get("noAFK", defaultSettings.noAFK) ? null : res(...args),
   );

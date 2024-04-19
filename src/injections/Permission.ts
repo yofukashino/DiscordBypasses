@@ -1,7 +1,8 @@
 import { PluginInjector, SettingValues } from "../index";
 import { defaultSettings } from "../lib/consts";
-import { DiscordConstants, PermissionStore } from "../lib/requiredModules";
+import Modules from "../lib/requiredModules";
 export default (): void => {
+  const { DiscordConstants, PermissionStore } = Modules;
   PluginInjector.after(PermissionStore, "can", (args: [bigint], res) => {
     if (
       args[0] == DiscordConstants.Permissions.USE_VAD &&

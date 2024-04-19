@@ -1,9 +1,10 @@
 import { common } from "replugged";
 import { PluginInjector, SettingValues } from "../index";
 import { defaultSettings } from "../lib/consts";
-import { SpotifyChecks, SpotifyProtocoalStore } from "../lib/requiredModules";
+import Modules from "../lib/requiredModules";
 const { fluxDispatcher: FluxDispatcher } = common;
 export default (): void => {
+  const { SpotifyChecks, SpotifyProtocoalStore } = Modules;
   PluginInjector.instead(SpotifyProtocoalStore, "getProfile", (args, res) =>
     SettingValues.get("spotifyPremium", defaultSettings.spotifyPremium)
       ? FluxDispatcher.dispatch({

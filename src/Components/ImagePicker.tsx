@@ -1,6 +1,6 @@
 import { React, toast as Toasts } from "replugged/common";
 import { Button, Flex, FormItem, Text } from "replugged/components";
-import { ImageInput } from "../lib/requiredModules";
+import Modules from "../lib/requiredModules";
 import Types from "../types";
 
 export default class ImagePickerItem extends React.Component<
@@ -73,7 +73,7 @@ export default class ImagePickerItem extends React.Component<
                 </Button>
                 <Button {...{ color: Button.Colors.WHITE, look: Button.Looks.OUTLINED }}>
                   Change Preview
-                  <ImageInput.default
+                  <Modules.ImageInput.default
                     {...{
                       onChange: (img: string) => {
                         const sizeInBytes = atob(img.split(",")[1])?.length;
@@ -92,7 +92,7 @@ export default class ImagePickerItem extends React.Component<
               <>
                 <Button {...{ color: Button.Colors.WHITE, look: Button.Looks.OUTLINED }}>
                   Add Preview
-                  <ImageInput.default
+                  <Modules.ImageInput.default
                     {...{
                       onChange: (img: string) => {
                         this.setState({ img });

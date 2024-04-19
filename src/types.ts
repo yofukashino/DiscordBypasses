@@ -13,7 +13,14 @@ export namespace Types {
   export type Guild = GeneralDiscordTypes.Guild;
   export type Role = GeneralDiscordTypes.Role;
   export type User = GeneralDiscordTypes.User;
-  export interface GenericModule extends Record<string, DefaultTypes.AnyFunction> {}
+  export type GenericModule = Record<string, DefaultTypes.AnyFunction> & {
+    default: DefaultTypes.AnyFunction;
+  };
+  export interface GenericExport {
+    exports?: GenericModule;
+    id: string;
+    loaded: boolean;
+  }
   export interface ElectronModule {
     architecture: string;
     asyncify: DefaultTypes.AnyFunction;
@@ -242,7 +249,35 @@ export namespace Types {
   export interface ImagePickerState {
     img: string;
   }
-
+  export interface Modules {
+    loadModules?: () => Promise<void>;
+    TimeoutManager?: TimeoutManager;
+    DiscordConstants?: DiscordConstants;
+    AccountSwitcherStrings?: { MAX_ACCOUNTS: number };
+    PermissionStore?: PermissionStore;
+    ElectronModule?: ElectronModule;
+    ApplicationStreamPreviewStore?: ApplicationStreamPreviewStore;
+    IdleStore?: IdleStore;
+    SpotifyProtocoalStore?: SpotifyProtocoalStore;
+    SpotifyChecks?: SpotifyChecks;
+    ClientThemesBackgroundStore?: ClientThemesBackgroundStore;
+    ImageConstructor?: ImageConstructor;
+    ClientThemeUpdate?: {
+      saveClientTheme: DefaultTypes.AnyFunction;
+    };
+    GradientPresets?: {
+      BACKGROUND_GRADIENT_PRESETS_MAP: Record<string, string>;
+    };
+    FolderConstructor?: GenericModule;
+    ImageInput?: {
+      default: React.ComponentClass<{ onChange: (...args: unknown[]) => void }>;
+      processImage: Types.DefaultTypes.AnyFunction;
+    };
+    AudioResolverPromise?: Promise<{
+      exports: Types.DefaultTypes.AnyFunction;
+    }>;
+    SpamUtils?: Types.SpamUtils;
+  }
   export interface Settings {
     NSFW: boolean;
     bandwidth: boolean;

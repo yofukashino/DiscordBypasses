@@ -1,7 +1,8 @@
 import { SettingValues } from "../index";
 import { defaultSettings } from "../lib/consts";
-import { DiscordConstants } from "../lib/requiredModules";
+import Modules from "../lib/requiredModules";
 export default (): void => {
+  const { DiscordConstants } = Modules;
   Object.defineProperty(DiscordConstants, "VerificationCriteria", {
     get: () => {
       return SettingValues.get("verification", defaultSettings.verification)

@@ -1,9 +1,10 @@
 import { util } from "replugged";
 import { PluginInjector, SettingValues } from "../index";
 import { defaultSettings } from "../lib/consts";
-import { FolderConstructor } from "../lib/requiredModules";
+import Modules from "../lib/requiredModules";
 import Types from "../types";
 export default (): void => {
+  const { FolderConstructor } = Modules;
   PluginInjector.after(
     FolderConstructor,
     "default",

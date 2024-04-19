@@ -1,8 +1,9 @@
 import { PluginInjector, SettingValues } from "../index";
 import { defaultSettings } from "../lib/consts";
-import { ImageConstructor } from "../lib/requiredModules";
+import Modules from "../lib/requiredModules";
 import Types from "../types";
 export default (): void => {
+  const { ImageConstructor } = Modules;
   if (SettingValues.get("favIMG", defaultSettings.favIMG)) {
     ImageConstructor.IMAGE_GIF_RE = new RegExp(/\.(gif|png|jpe?g|webp)($|\?|#)/i);
   }

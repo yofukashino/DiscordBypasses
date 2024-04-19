@@ -1,7 +1,8 @@
 import { PluginInjector, SettingValues } from "../index";
 import { defaultSettings } from "../lib/consts";
-import { ElectronModule } from "../lib/requiredModules";
+import Modules from "../lib/requiredModules";
 export default (): void => {
+  const { ElectronModule } = Modules;
   if (!SettingValues.get("setBadge", defaultSettings.setBadge)) return;
   ElectronModule.setBadge(0);
   PluginInjector.before(ElectronModule, "setBadge", (args) => {

@@ -1,7 +1,8 @@
 import { PluginInjector, SettingValues } from "../index";
 import { defaultSettings } from "../lib/consts";
-import { TimeoutManager } from "../lib/requiredModules";
+import Modules from "../lib/requiredModules";
 export default (): void => {
+  const { TimeoutManager } = Modules;
   PluginInjector.instead(
     TimeoutManager.Timeout.prototype,
     "start",

@@ -1,9 +1,10 @@
 import { users as UltimateUserStore } from "replugged/common";
 import { PluginInjector, PluginLogger, SettingValues } from "../index";
 import { defaultSettings } from "../lib/consts";
-import { ApplicationStreamPreviewStore, ElectronModule } from "../lib/requiredModules";
+import Modules from "../lib/requiredModules";
 
 export default (): void => {
+  const { ApplicationStreamPreviewStore, ElectronModule } = Modules;
   if (!SettingValues.get("streamPreview", defaultSettings.streamPreview)) return;
   const replacePreviewWith =
     SettingValues.get("fakePreview", defaultSettings.fakePreview) !== ""
