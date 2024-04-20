@@ -4,12 +4,14 @@ export const Modules: Types.Modules = {};
 
 Modules.loadModules = async (): Promise<void> => {
   Modules.PermissionStore ??= webpack.getByStoreName<Types.PermissionStore>("PermissionStore");
-  Modules.ApplicationStreamPreviewStore ??=
-    webpack.getByStoreName<Types.ApplicationStreamPreviewStore>("ApplicationStreamPreviewStore");
   Modules.ClientThemesBackgroundStore ??= webpack.getByStoreName<Types.ClientThemesBackgroundStore>(
     "ClientThemesBackgroundStore",
   );
   Modules.IdleStore ??= webpack.getByStoreName<Types.IdleStore>("IdleStore");
+  Modules.ApplicationStreamPreviewStore ??=
+    await webpack.waitForModule<Types.ApplicationStreamPreviewStore>(
+      webpack.filters.bySource('="ApplicationStreamPreviewStore"'),
+    );
   Modules.TimeoutManager ??= await webpack.waitForProps<Types.TimeoutManager>(
     "Timeout",
     "DelayedCall",
