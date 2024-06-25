@@ -1,20 +1,31 @@
+import { webpack } from "replugged";
 import { PluginInjector, SettingValues } from "../index";
 import { defaultSettings } from "../lib/consts";
 import Modules from "../lib/requiredModules";
 import Types from "../types";
+
 export default (): void => {
   const { ImageConstructor } = Modules;
+
   if (SettingValues.get("favIMG", defaultSettings.favIMG)) {
-    ImageConstructor.IMAGE_GIF_RE = new RegExp(/\.(gif|png|jpe?g|webp)($|\?|#)/i);
+    const [IMAGE_GIF_RE] = Object.entries(ImageConstructor).find(
+      ([_key, value]) => value instanceof RegExp,
+    );
+    ImageConstructor[IMAGE_GIF_RE] = new RegExp(/\.(gif|png|jpe?g|webp)($|\?|#)/i);
   }
-  PluginInjector.instead(ImageConstructor.default, "isAnimated", (args, res) => {
+
+  const MainImageConstructor = webpack.getFunctionBySource<
+    Types.DefaultTypes.AnyFunction & { isAnimated: Types.DefaultTypes.AnyFunction }
+  >(ImageConstructor, "handleImageLoad");
+
+  PluginInjector.instead(MainImageConstructor, "isAnimated", (args, res) => {
     if (SettingValues.get("favIMG", defaultSettings.favIMG)) {
       return true;
     }
     return res(...args);
   });
   PluginInjector.after(
-    ImageConstructor.default.prototype,
+    MainImageConstructor.prototype,
     "render",
     (
       _args,

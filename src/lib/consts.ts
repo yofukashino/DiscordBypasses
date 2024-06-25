@@ -21,4 +21,5 @@ export const defaultSettings = {
   favIMG: true,
   ringtone: "call_ringing_beat.mp3",
   spam: true,
+  voiceMessage: true,
 };

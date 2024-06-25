@@ -1,10 +1,18 @@
+import { webpack } from "replugged";
 import { PluginInjector, SettingValues } from "../index";
 import { defaultSettings } from "../lib/consts";
 import Modules from "../lib/requiredModules";
+import Types from "../types";
 export default (): void => {
   const { TimeoutManager } = Modules;
+
+  const Timeout = webpack.getFunctionBySource<Types.DefaultTypes.AnyFunction>(
+    TimeoutManager,
+    "window.setTimeout",
+  );
+
   PluginInjector.instead(
-    TimeoutManager.Timeout.prototype,
+    Timeout.prototype,
     "start",
     (args: [string | number, string], res, instance: { start: () => void; stop: () => void }) => {
       if (
@@ -20,8 +28,14 @@ export default (): void => {
       return res.call(instance, ...args);
     },
   );
+
+  const Interval = webpack.getFunctionBySource<Types.DefaultTypes.AnyFunction>(
+    TimeoutManager,
+    "window.setInterval",
+  );
+
   PluginInjector.instead(
-    TimeoutManager.Interval.prototype,
+    Interval.prototype,
     "start",
     (args: [string | number, string], res, instance: { start: () => void; stop: () => void }) => {
       if (

@@ -1,9 +1,13 @@
+import { webpack } from "replugged";
 import { React, toast as Toasts } from "replugged/common";
 import { Button, Flex, FormItem, Text } from "replugged/components";
 import Modules from "../lib/requiredModules";
 import Types from "../types";
 
 export default ({ value, onChange, disabled }: Types.ImagePickerProps) => {
+  const ImageInputWrapper = webpack.getFunctionBySource<
+    React.ComponentClass<{ onChange: (...args: unknown[]) => void }>
+  >(Modules.ImageInput ?? {}, ".Messages.UNABLE_TO_PROCESS_IMAGE");
   const [img, setImg] = React.useState(value);
   return (
     !disabled && (
@@ -51,7 +55,7 @@ export default ({ value, onChange, disabled }: Types.ImagePickerProps) => {
               </Button>
               <Button color={Button.Colors.WHITE} look={Button.Looks.OUTLINED}>
                 Change Preview
-                <Modules.ImageInput.default
+                <ImageInputWrapper
                   onChange={(img: string) => {
                     const sizeInBytes = atob(img.split(",")[1])?.length;
                     if (sizeInBytes / 1024 > 200) {
@@ -68,7 +72,7 @@ export default ({ value, onChange, disabled }: Types.ImagePickerProps) => {
             <>
               <Button color={Button.Colors.WHITE} look={Button.Looks.OUTLINED}>
                 Add Preview
-                <Modules.ImageInput.default
+                <ImageInputWrapper
                   onChange={(img: string) => {
                     const sizeInBytes = atob(img.split(",")[1])?.length;
                     if (sizeInBytes / 1024 > 200) {

@@ -3,7 +3,10 @@ import { defaultSettings } from "../lib/consts";
 import Modules from "../lib/requiredModules";
 export default (): void => {
   const { AccountSwitcherStrings } = Modules;
-  Object.defineProperty(AccountSwitcherStrings, "MAX_ACCOUNTS", {
+  const [MAX_ACCOUNTS] = Object.entries(AccountSwitcherStrings).find(
+    ([_key, value]) => typeof value === "number",
+  );
+  Object.defineProperty(AccountSwitcherStrings, MAX_ACCOUNTS, {
     get: () => {
       return SettingValues.get("maxAccounts", defaultSettings.maxAccounts) ? Infinity : 5;
     },

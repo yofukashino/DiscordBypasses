@@ -107,6 +107,11 @@ export const Settings = () => {
         {...util.useSetting(SettingValues, "spam", defaultSettings.spam)}>
         No Spam
       </SwitchItem>
+      <SwitchItem
+        note="Add Download button for voice messages."
+        {...util.useSetting(SettingValues, "voiceMessage", defaultSettings.voiceMessage)}>
+        Downloadable Voice Messages
+      </SwitchItem>
       <FormText.LABEL_BOLD
         style={{
           textAlign: "center",
@@ -118,3 +123,5 @@ export const Settings = () => {
     </div>
   );
 };
+
+export default { registerSettings, Settings };

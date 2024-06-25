@@ -12,7 +12,8 @@ import injectSpamUtils from "./SpamUtils";
 import injectSpotifyPremium from "./SpotifyPremium";
 import injectStreamPreview from "./StreamPreview";
 import injectTimeouts from "./Timeout";
-import bypassNSFW from "./User";
+import injectUser from "./User";
+import injectVoiceMessages from "./VoiceMessages";
 
 export const applyInjections = async (): Promise<void> => {
   await Modules.loadModules();
@@ -29,7 +30,8 @@ export const applyInjections = async (): Promise<void> => {
   injectSpotifyPremium();
   injectStreamPreview();
   injectTimeouts();
-  bypassNSFW();
+  injectUser();
+  injectVoiceMessages();
 };
 
 export default { applyInjections };

@@ -21,6 +21,11 @@ export namespace Types {
     id: string;
     loaded: boolean;
   }
+  export interface GenericMemo {
+    $$typeof: symbol;
+    compare: DefaultTypes.AnyFunction;
+    type: DefaultTypes.AnyFunction;
+  }
   export interface ElectronModule {
     architecture: string;
     asyncify: DefaultTypes.AnyFunction;
@@ -158,11 +163,6 @@ export namespace Types {
     Permissions: Permissions;
     VerificationCriteria: { ACCOUNT_AGE: number; MEMBER_AGE: number };
   }
-  export interface SpamUtils {
-    isSpam: DefaultTypes.AnyFunction;
-    isSpamSupported: DefaultTypes.AnyFunction;
-    isSpammer: DefaultTypes.AnyFunction;
-  }
   export interface ImageConstructor {
     IMAGE_GIF_RE: RegExp;
     default: { isAnimated: DefaultTypes.AnyFunction } & DefaultTypes.AnyFunction;
@@ -237,7 +237,15 @@ export namespace Types {
     isAFK: DefaultTypes.AnyFunction;
     isIdle: DefaultTypes.AnyFunction;
   }
-
+  export type DownloadButton = React.ComponentType<
+    Record<string, unknown> & {
+      target?: string;
+      rel?: string;
+      style?: Record<string, string>;
+      href?: string;
+      mimeType?: string[];
+    }
+  >;
   export interface ImagePickerProps {
     title?: string;
     note: string;
@@ -251,32 +259,30 @@ export namespace Types {
   }
   export interface Modules {
     loadModules?: () => Promise<void>;
-    TimeoutManager?: TimeoutManager;
-    DiscordConstants?: DiscordConstants;
-    AccountSwitcherStrings?: { MAX_ACCOUNTS: number };
+    TimeoutManager?: Types.GenericModule;
+    DiscordConstants?: Types.GenericModule;
+    AccountSwitcherStrings?: Types.GenericModule;
     PermissionStore?: PermissionStore;
     ElectronModule?: ElectronModule;
     ApplicationStreamPreviewStore?: ApplicationStreamPreviewStore;
     IdleStore?: IdleStore;
-    SpotifyProtocoalStore?: SpotifyProtocoalStore;
-    SpotifyChecks?: SpotifyChecks;
+    SpotifyProtocoalStore?: Types.GenericModule;
+    SpotifyChecks?: Types.GenericModule;
     ClientThemesBackgroundStore?: ClientThemesBackgroundStore;
-    ImageConstructor?: ImageConstructor;
-    ClientThemeUpdate?: {
-      saveClientTheme: DefaultTypes.AnyFunction;
-    };
+    ImageConstructor?: Record<string, DefaultTypes.AnyFunction | RegExp>;
+    ClientThemeUpdate?: Types.GenericModule;
+    GradientPresetsModule?: Types.GenericModule;
     GradientPresets?: {
       BACKGROUND_GRADIENT_PRESETS_MAP: Record<string, string>;
     };
     FolderConstructor?: GenericModule;
-    ImageInput?: {
-      default: React.ComponentClass<{ onChange: (...args: unknown[]) => void }>;
-      processImage: Types.DefaultTypes.AnyFunction;
-    };
+    ImageInput?: Types.GenericModule;
     AudioResolverPromise?: Promise<{
       exports: Types.DefaultTypes.AnyFunction;
     }>;
-    SpamUtils?: Types.SpamUtils;
+    SpamUtils?: Types.GenericModule;
+    VoiceMessage?: GenericMemo;
+    DownloadButton?: DownloadButton;
   }
   export interface Settings {
     NSFW: boolean;
@@ -294,7 +300,8 @@ export namespace Types {
     plainFolderIcon: boolean;
     favIMG: boolean;
     ringtone: string;
-    spam: string;
+    spam: boolean;
+    voiceMessage: boolean;
   }
 }
 export default Types;
