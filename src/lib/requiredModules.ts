@@ -150,9 +150,7 @@ Modules.loadModules = async (): Promise<void> => {
   );
   Modules.IdleStore ??= webpack.getByStoreName<Types.IdleStore>("IdleStore");
   Modules.ApplicationStreamPreviewStore ??=
-    await webpack.getByStoreName<Types.ApplicationStreamPreviewStore>(
-      "ApplicationStreamPreviewStore",
-    );
+    webpack.getByStoreName<Types.ApplicationStreamPreviewStore>("ApplicationStreamPreviewStore");
 };
 
 export default Modules;
