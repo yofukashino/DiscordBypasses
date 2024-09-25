@@ -13,7 +13,7 @@ export namespace Types {
   export type Guild = GeneralDiscordTypes.Guild;
   export type Role = GeneralDiscordTypes.Role;
   export type User = GeneralDiscordTypes.User;
-  export type GenericModule = Record<string, DefaultTypes.AnyFunction | unknown> & {
+  export type GenericModule = Record<string, DefaultTypes.AnyFunction> & {
     default: DefaultTypes.AnyFunction;
   };
   export interface GenericExport {
@@ -271,7 +271,7 @@ export namespace Types {
     ClientThemesBackgroundStore?: ClientThemesBackgroundStore;
     ImageConstructor?: Record<string, DefaultTypes.AnyFunction | RegExp>;
     ClientThemeUpdate?: Types.GenericModule;
-    GradientPresetsModule?: Types.GenericModule;
+    GradientPresetsModule?: Record<string, Record<string, string>>;
     GradientPresets?: {
       BACKGROUND_GRADIENT_PRESETS_MAP: Record<string, string>;
     };

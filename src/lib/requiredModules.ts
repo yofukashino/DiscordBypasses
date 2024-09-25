@@ -75,7 +75,7 @@ Modules.loadModules = async (): Promise<void> => {
     });
 
   Modules.GradientPresetsModule ??= await webpack
-    .waitForModule<Types.GenericModule>(
+    .waitForModule<Record<string, Record<string, string>>>(
       webpack.filters.bySource("Messages.CLIENT_THEMES_GRADIENT_MINT_APPLE"),
       {
         timeout: 10000,
@@ -88,7 +88,7 @@ Modules.loadModules = async (): Promise<void> => {
   Modules.GradientPresets ??= {
     BACKGROUND_GRADIENT_PRESETS_MAP: Object.values(Modules.GradientPresetsModule).find(
       (x) => !Array.isArray(x),
-    ) as Record<string, string>,
+    ),
   };
 
   Modules.FolderConstructor ??= await webpack
