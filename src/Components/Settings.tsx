@@ -78,9 +78,14 @@ export const Settings = () => {
         No Idle
       </SwitchItem>
       <SwitchItem
-        note="Remove the need for Nitro from client themes, which is a beta feature."
+        note="Remove the need for Nitro from client themes."
         {...util.useSetting(SettingValues, "clientThemes", defaultSettings.clientThemes)}>
         Client Themes bypass
+      </SwitchItem>
+      <SwitchItem
+        note="Remove the need for Nitro from app icon in sidebar."
+        {...util.useSetting(SettingValues, "appIcons", defaultSettings.appIcons)}>
+        Sidebar App Icon bypass
       </SwitchItem>
       <SwitchItem
         note="Show Plain Folder Icon instead of the small guilds icons on guild folders."

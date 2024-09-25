@@ -16,6 +16,7 @@ export const defaultSettings = {
   verification: true,
   maxAccounts: true,
   clientThemes: true,
+  appIcons: true,
   gradientPreset: null,
   plainFolderIcon: true,
   favIMG: true,

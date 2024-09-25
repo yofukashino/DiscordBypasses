@@ -3,16 +3,16 @@
   "name": "DiscordBypasses",
   "description": "A collection of bypasses and utilities. Take a look in the plugin's settings for the features.",
   "image": "https://i.imgur.com/Tqcr5zs.png",
-  "source": "https://github.com/YofukashiNo/DiscordBypasses",
+  "source": "https://github.com/yofukashino/DiscordBypasses",
   "author": {
     "name": "Nanakusa",
     "discordID": "1121961711080050780",
-    "github": "YofukashiNo"
+    "github": "yofukashino"
   },
   "version": "1.3.1",
   "updater": {
     "type": "github",
-    "id": "YofukashiNo/DiscordBypasses"
+    "id": "yofukashino/DiscordBypasses"
   },
   "license": "MIT",
   "type": "replugged-plugin",

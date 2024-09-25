@@ -34,4 +34,34 @@ export default [
       },
     ],
   },
+  {
+    find: "ApplicationStreamPreviewUploadManager",
+    replacements: [
+      {
+        match: /(let (.)=)(.\.toDataURL\("image\/jpeg"\));/,
+        replace: (_: string, prefix: string, preview: string, original: string) =>
+          `${prefix}replugged?.plugins?.getExports('dev.tharki.DiscordBypasses')?._getStreamPreview(${original}); if (!${preview}) return;`,
+      },
+    ],
+  },
+  {
+    find: "AppIconPersistedStoreState",
+    replacements: [
+      {
+        match: /get isUpsellPreview\(\){return (\w+)/,
+        replace: (_, value) =>
+          `get isUpsellPreview(){return !(replugged?.plugins?.getExports('dev.tharki.DiscordBypasses')?._getAppIconsEnabled() || !${value})`,
+      },
+    ],
+  },
+  {
+    find: ".getCurrentDesktopIcon(),",
+    replacements: [
+      {
+        match: /\w+\.\w+\.isPremium\(\w+\.default\.getCurrentUser\(\)\)/,
+        replace: (premium) =>
+          `replugged?.plugins?.getExports('dev.tharki.DiscordBypasses')?._getAppIconsEnabled()||${premium}`,
+      },
+    ],
+  },
 ] as Types.DefaultTypes.PlaintextPatch[];

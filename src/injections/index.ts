@@ -10,7 +10,6 @@ import injectPTT from "./Permission";
 import injectBadges from "./SetBadge";
 import injectSpamUtils from "./SpamUtils";
 import injectSpotifyPremium from "./SpotifyPremium";
-import injectStreamPreview from "./StreamPreview";
 import injectTimeouts from "./Timeout";
 import injectUser from "./User";
 import injectVoiceMessages from "./VoiceMessages";
@@ -28,7 +27,6 @@ export const applyInjections = async (): Promise<void> => {
   injectBadges();
   injectSpamUtils();
   injectSpotifyPremium();
-  injectStreamPreview();
   injectTimeouts();
   injectUser();
   injectVoiceMessages();
