@@ -13,7 +13,7 @@ export namespace Types {
   export type Guild = GeneralDiscordTypes.Guild;
   export type Role = GeneralDiscordTypes.Role;
   export type User = GeneralDiscordTypes.User;
-  export type GenericModule = Record<string, DefaultTypes.AnyFunction> & {
+  export type GenericModule = Record<string, DefaultTypes.AnyFunction | unknown> & {
     default: DefaultTypes.AnyFunction;
   };
   export interface GenericExport {
