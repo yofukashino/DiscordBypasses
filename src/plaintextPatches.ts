@@ -49,7 +49,7 @@ export default [
     replacements: [
       {
         match: /get isUpsellPreview\(\){return (\w+)/,
-        replace: (_, value) =>
+        replace: (_, value: string) =>
           `get isUpsellPreview(){return !(replugged?.plugins?.getExports('dev.tharki.DiscordBypasses')?._getAppIconsEnabled() || !${value})`,
       },
     ],
