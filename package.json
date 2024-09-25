@@ -1,6 +1,6 @@
 {
   "name": "discord-bypasses",
-  "version": "1.3.2",
+  "version": "1.3.3",
   "description": "A collection of bypasses and utilities. Take a look in the plugin's settings for the features.",
   "engines": {
     "node": ">=14.0.0"
