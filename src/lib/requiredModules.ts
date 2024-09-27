@@ -65,7 +65,7 @@ Modules.loadModules = async (): Promise<void> => {
 
   Modules.ClientThemeUpdate ??= await webpack
     .waitForModule<Types.GenericModule>(
-      webpack.filters.bySource("clientThemeSettings={backgroundGradientPresetId"),
+      webpack.filters.bySource("clientThemeSettings:{backgroundGradientPresetId"),
       {
         timeout: 10000,
       },
