@@ -54,7 +54,7 @@ Modules.loadModules = async (): Promise<void> => {
 
   Modules.ImageConstructor ??= await webpack
     .waitForModule<Types.GenericModule & Record<string, RegExp>>(
-      webpack.filters.bySource("/\\.(gif|webp)($|\\?|#)/i"),
+      webpack.filters.bySource("/\\.gif($|\\?|#)/i"),
       {
         timeout: 10000,
       },
