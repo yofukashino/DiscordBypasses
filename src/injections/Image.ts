@@ -9,7 +9,7 @@ export default (): void => {
 
   if (SettingValues.get("favIMG", defaultSettings.favIMG)) {
     const [IMAGE_GIF_RE] = Object.entries(ImageConstructor).find(
-      ([_key, value]) => value instanceof RegExp,
+      ([_key, value]) => value instanceof RegExp && value.test(".gif"),
     );
     ImageConstructor[IMAGE_GIF_RE] = new RegExp(/\.(gif|png|jpe?g|webp)($|\?|#)/i);
   }
