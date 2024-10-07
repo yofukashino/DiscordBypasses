@@ -50,12 +50,12 @@ export default [
       {
         match: /\w+\.\w+\.canUsePremiumAppIcons\(\w+\.default\.getCurrentUser\(\)\)/,
         replace: (premium) =>
-          `(replugged?.plugins?.getExports('dev.tharki.LegalDiscordBypasses')?._getAppIconsEnabled()||${premium})`,
+          `(replugged?.plugins?.getExports('dev.tharki.DiscordBypasses')?._getAppIconsEnabled()||${premium})`,
       },
       {
         match: /get isUpsellPreview\(\){return (\w+)/,
         replace: (_, value: string) =>
-          `get isUpsellPreview(){return !(replugged?.plugins?.getExports('dev.tharki.LegalDiscordBypasses')?._getAppIconsEnabled() || !${value})`,
+          `get isUpsellPreview(){return !(replugged?.plugins?.getExports('dev.tharki.DiscordBypasses')?._getAppIconsEnabled() || !${value})`,
       },
     ],
   },
@@ -65,7 +65,7 @@ export default [
       {
         match: /\w+\.\w+\.isPremium\(\w+\.default\.getCurrentUser\(\)\)/,
         replace: (premium) =>
-          `(replugged?.plugins?.getExports('dev.tharki.LegalDiscordBypasses')?._getAppIconsEnabled()||${premium})`,
+          `(replugged?.plugins?.getExports('dev.tharki.DiscordBypasses')?._getAppIconsEnabled()||${premium})`,
       },
     ],
   },
