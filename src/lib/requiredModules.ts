@@ -105,9 +105,12 @@ Modules.loadModules = async (): Promise<void> => {
     });
 
   Modules.ImageInput ??= await webpack
-    .waitForModule<Types.GenericModule>(webpack.filters.bySource(".Messages.UNABLE_TO_PROCESS_IMAGE"), {
-      timeout: 10000,
-    })
+    .waitForModule<Types.GenericModule>(
+      webpack.filters.bySource(".Messages.UNABLE_TO_PROCESS_IMAGE"),
+      {
+        timeout: 10000,
+      },
+    )
     .catch(() => {
       throw new Error("Failed To Find ImageInput Module");
     });
