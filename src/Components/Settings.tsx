@@ -100,10 +100,12 @@ export const Settings = () => {
       <SelectItem
         {...util.useSetting(SettingValues, "ringtone", defaultSettings.ringtone)}
         options={[
+          { label: "Sync With Discord", value: "sync" },
           { label: "Default Ringtone", value: "call_ringing.mp3" },
           { label: "Secret Ringtone", value: "call_ringing_beat.mp3" },
-          { label: "Halloween Ringtone", value: "call_ringing_halloween.mp3" },
+          { label: "Halloween Ringtone", value: "halloween_call_ringing.mp3" },
           { label: "Snowsgiving Ringtone", value: "call_ringing_snowsgiving.mp3" },
+          { label: "Snow Halation Ringtone", value: "call_ringing_snow_halation.mp3" },
         ]}>
         Special Ringtone
       </SelectItem>
