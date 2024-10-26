@@ -5,7 +5,6 @@ import { defaultSettings } from "../lib/consts";
 export default async (): Promise<void> => {
   const AudioResolver = await Modules.AudioResolverPromise;
   PluginInjector.before(AudioResolver, "exports", ([sound]) => {
-    console.log(sound);
     return sound.includes("call_ringing") &&
       SettingValues.get("ringtone", defaultSettings.ringtone) !== "sync"
       ? [`./${SettingValues.get("ringtone", defaultSettings.ringtone)}`]
