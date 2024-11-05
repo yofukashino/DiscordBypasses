@@ -7,7 +7,7 @@ import Types from "../types";
 export default ({ value, onChange, disabled }: Types.ImagePickerProps) => {
   const ImageInputWrapper = webpack.getFunctionBySource<
     React.ComponentClass<{ onChange: (...args: unknown[]) => void }>
-  >(Modules.ImageInput ?? {}, ".Messages.UNABLE_TO_PROCESS_IMAGE");
+  >(Modules.ImageInput ?? {}, "this.handleFileChange");
   const [img, setImg] = React.useState(value);
   return (
     !disabled && (

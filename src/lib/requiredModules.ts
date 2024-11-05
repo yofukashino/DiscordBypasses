@@ -76,7 +76,7 @@ Modules.loadModules = async (): Promise<void> => {
 
   Modules.GradientPresetsModule ??= await webpack
     .waitForModule<Record<string, Record<string, string>>>(
-      webpack.filters.bySource("Messages.CLIENT_THEMES_GRADIENT_MINT_APPLE"),
+      webpack.filters.bySource(".MINT_APPLE,theme"),
       {
         timeout: 10000,
       },
@@ -92,25 +92,19 @@ Modules.loadModules = async (): Promise<void> => {
   };
 
   Modules.FolderConstructor ??= await webpack
-    .waitForModule<Types.GenericExport>(
-      webpack.filters.bySource(".Messages.GUILD_FOLDER_TOOLTIP_A11Y_LABEL"),
-      {
-        raw: true,
-        timeout: 10000,
-      },
-    )
+    .waitForModule<Types.GenericExport>(webpack.filters.bySource(".expandedFolderIconWrapper"), {
+      raw: true,
+      timeout: 10000,
+    })
     .then(({ exports }) => exports)
     .catch(() => {
       throw new Error("Failed To Find FolderConstructorModule");
     });
 
   Modules.ImageInput ??= await webpack
-    .waitForModule<Types.GenericModule>(
-      webpack.filters.bySource(".Messages.UNABLE_TO_PROCESS_IMAGE"),
-      {
-        timeout: 10000,
-      },
-    )
+    .waitForModule<Types.GenericModule>(webpack.filters.bySource("maxFileSizeBytes:1/0"), {
+      timeout: 10000,
+    })
     .catch(() => {
       throw new Error("Failed To Find ImageInput Module");
     });
