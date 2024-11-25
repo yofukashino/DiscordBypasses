@@ -10,6 +10,26 @@ Modules.loadModules = async (): Promise<void> => {
     .catch(() => {
       throw new Error("Failed To Find DiscordConstants Module");
     });
+  Modules.HashMap = await webpack
+    .waitForProps<Types.GenericModule>(["runtimeHashMessageKey"], {
+      timeout: 10000,
+    })
+    .then(({ runtimeHashMessageKey }) => {
+      return new Proxy(
+        {},
+        {
+          get(_, prop) {
+            return prop === "runtimeHashMessageKey"
+              ? runtimeHashMessageKey
+              : runtimeHashMessageKey(prop);
+          },
+        },
+      );
+    })
+    .catch(() => {
+      throw new Error("Failed To Find HashMap Module");
+    });
+
   Modules.TimeoutManager ??= await webpack
     .waitForModule<Types.GenericModule>(webpack.filters.bySource("this._timeout.isStarted()"), {
       timeout: 10000,

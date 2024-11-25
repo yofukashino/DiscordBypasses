@@ -1,4 +1,4 @@
-import { components } from "replugged/common";
+import { components, i18n } from "replugged/common";
 import { PluginInjector, SettingValues } from "../index";
 import { defaultSettings } from "../lib/consts";
 import Modules from "../lib/requiredModules";
@@ -17,7 +17,7 @@ export default (): void => {
       res?.props?.children?.splice?.(
         -1,
         0,
-        <Tooltip text={"Download"}>
+        <Tooltip text={i18n.t.DOWNLOAD}>
           {(props) => (
             <DownloadButton
               {...props}

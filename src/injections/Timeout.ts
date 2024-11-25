@@ -4,7 +4,7 @@ import { defaultSettings } from "../lib/consts";
 import Modules from "../lib/requiredModules";
 import Types from "../types";
 export default (): void => {
-  const { TimeoutManager } = Modules;
+  const { TimeoutManager, HashMap } = Modules;
 
   const Timeout = webpack.getFunctionBySource<Types.DefaultTypes.AnyFunction>(
     TimeoutManager,
@@ -16,7 +16,7 @@ export default (): void => {
     "start",
     (args: [string | number, string], res, instance: { start: () => void; stop: () => void }) => {
       if (
-        (args[1]?.toString().includes("BOT_CALL_IDLE_DISCONNECT") &&
+        (args[1]?.toString().includes(HashMap.BOT_CALL_IDLE_DISCONNECT_2) &&
           SettingValues.get("bandwidth", defaultSettings.bandwidth)) ||
         (args[1]?.toString().includes("SPOTIFY_AUTO_PAUSED") &&
           SettingValues.get("spotifyPause", defaultSettings.spotifyPause))
@@ -39,7 +39,7 @@ export default (): void => {
     "start",
     (args: [string | number, string], res, instance: { start: () => void; stop: () => void }) => {
       if (
-        (args[1]?.toString().includes("BOT_CALL_IDLE_DISCONNECT") &&
+        (args[1]?.toString().includes(HashMap.BOT_CALL_IDLE_DISCONNECT_2) &&
           SettingValues.get("bandwidth", defaultSettings.bandwidth)) ||
         (args[1]?.toString().includes("SPOTIFY_AUTO_PAUSED") &&
           SettingValues.get("spotifyPause", defaultSettings.spotifyPause))

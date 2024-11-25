@@ -1,9 +1,12 @@
 import { users as UltimateUserStore } from "replugged/common";
+import Types from "../types";
 
 export const defaultSettings = {
   get NSFW() {
-    // @ts-expect-error uum i cant think of a better way?
-    return !UltimateUserStore.getCurrentUser(true)?.nsfwAllowed ?? false;
+    return (
+      !(UltimateUserStore.getCurrentUser as (original: boolean) => Types.User)(true)?.nsfwAllowed ||
+      false
+    );
   },
   bandwidth: true,
   PTT: true,
