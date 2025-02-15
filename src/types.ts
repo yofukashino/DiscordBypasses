@@ -3,10 +3,11 @@ import GeneralDiscordTypes from "discord-types/general";
 import type { Store as StoreType } from "replugged/dist/renderer/modules/common/flux";
 import { ContextMenuType } from "replugged/dist/renderer/modules/components/ContextMenu";
 import util from "replugged/util";
-
+import { OriginalTooltipType } from "replugged/dist/renderer/modules/components/Tooltip";
 export namespace Types {
   export import DefaultTypes = types;
   export type MenuProps = React.ComponentProps<ContextMenuType["ContextMenu"]>;
+  export type Tooltip = OriginalTooltipType;
   export type Tree = util.Tree;
   export type Store = StoreType;
   export type OriginalChannel = GeneralDiscordTypes.Channel;

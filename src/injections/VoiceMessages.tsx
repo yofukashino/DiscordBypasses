@@ -1,9 +1,12 @@
+import { webpack } from "replugged";
 import { components, i18n } from "replugged/common";
 import { PluginInjector, SettingValues } from "../index";
 import { defaultSettings } from "../lib/consts";
 import Modules from "../lib/requiredModules";
+import Types from "../types";
+
 export default (): void => {
-  const { Tooltip } = components;
+  const Tooltip = webpack.getFunctionBySource<Types.Tooltip>(components, "shouldShowTooltip");
   const { DownloadButton, VoiceMessage } = Modules;
   PluginInjector.after(
     VoiceMessage,
@@ -13,11 +16,10 @@ export default (): void => {
       res: React.ReactElement,
     ) => {
       if (!SettingValues.get("voiceMessage", defaultSettings.voiceMessage)) return res;
-
       res?.props?.children?.splice?.(
         -1,
         0,
-        <Tooltip text={i18n.t.DOWNLOAD}>
+        <Tooltip text={i18n.intl.formatToPlainString(i18n.t.DOWNLOAD)}>
           {(props) => (
             <DownloadButton
               {...props}
