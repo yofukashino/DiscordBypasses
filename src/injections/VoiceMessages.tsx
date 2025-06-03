@@ -12,7 +12,9 @@ export default (): void => {
     VoiceMessage,
     "type",
     (
-      [{ item, mimeType }]: [{ mimeType: string[]; item: { downloadUrl: string } }],
+      [{ item, mimeType, fileName }]: [
+        { mimeType: string[]; item: { downloadUrl: string }; fileName: string },
+      ],
       res: React.ReactElement,
     ) => {
       if (!SettingValues.get("voiceMessage", defaultSettings.voiceMessage)) return res;
@@ -26,6 +28,7 @@ export default (): void => {
               target="_blank"
               rel="noreferrer noopener"
               style={{ paddingLeft: "10px", color: "var(--interactive-normal)" }}
+              download={fileName}
               href={item?.downloadUrl}
               mimeType={mimeType}
             />
