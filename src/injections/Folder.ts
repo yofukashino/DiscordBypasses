@@ -10,17 +10,11 @@ export default (): void => {
   PluginInjector.after(FolderConstructor, loader, (_args, res: React.ReactElement & Types.Tree) => {
     const IconWrapper = util.findInReactTree(
       res,
-      (c) =>
-        c?.props &&
-        Object.hasOwnProperty.call(c?.props, "folderNode") &&
-        Object.hasOwnProperty.call(c?.props, "hovered"),
+      (c: Types.ReactTree) =>
+        c?.props?.className?.includes("folderButtonInner") && c?.props?.children,
     ) as React.ReactElement & Types.Tree;
-    if (IconWrapper)
-      IconWrapper.props.expanded ||= SettingValues.get(
-        "plainFolderIcon",
-        defaultSettings.plainFolderIcon,
-      );
-
+    if (SettingValues.get("plainFolderIcon", defaultSettings.plainFolderIcon) && IconWrapper)
+      IconWrapper.props.className = `discordBypasses-folderIcon ${IconWrapper.props.className}`;
     return res;
   });
 };

@@ -9,6 +9,7 @@ export namespace Types {
   export type MenuProps = React.ComponentProps<ContextMenuType["ContextMenu"]>;
   export type Tooltip = OriginalTooltipType;
   export type Tree = util.Tree;
+  export type ReactTree = React.ReactElement & util.Tree;
   export type Store = StoreType;
   export type OriginalChannel = GeneralDiscordTypes.Channel;
   export type Guild = GeneralDiscordTypes.Guild;
