@@ -1,4 +1,5 @@
-import { PluginInjector } from "..";
+import { PluginInjector, SettingValues } from "..";
+import { defaultSettings } from "../lib/consts";
 import Modules from "../lib/requiredModules";
 
 export default (): void => {
@@ -13,10 +14,10 @@ export default (): void => {
         appearance: { clientThemeSettings: Record<string, unknown> };
       },
     ) => {
-      if (res.appearance)
+      if (res.appearance && SettingValues.get("clientThemes", defaultSettings.clientThemes))
         res.appearance.clientThemeSettings =
-          UserSettingsProtoStore.settings.appearance.clientThemeSettings;
-
+          UserSettingsProtoStore.settings.appearance.clientThemeSettings ??
+          SettingValues.get("clientThemeSettings", defaultSettings.clientThemeSettings);
       return res;
     },
   );

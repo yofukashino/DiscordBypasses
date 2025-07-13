@@ -22,6 +22,12 @@ export const _getSettingsProtoToSave = (
     appearance: { clientThemeSettings: Record<string, unknown> };
   },
 ): Record<string, unknown> => {
+  if (!SettingValues.get("clientThemes", defaultSettings.clientThemes)) {
+    SettingValues.set("clientThemeSettings", defaultSettings.clientThemeSettings);
+    return protoToSave;
+  }
+  if (protoToSave?.appearance?.clientThemeSettings)
+    SettingValues.set("clientThemeSettings", protoToSave?.appearance?.clientThemeSettings);
   delete protoToSave?.appearance?.clientThemeSettings;
   return protoToSave;
 };
