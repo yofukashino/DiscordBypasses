@@ -111,6 +111,15 @@ Modules.loadModules = async (): Promise<void> => {
     ),
   };
 
+  Modules.PreloadedUserSettings ??= await webpack
+    .waitForModule<Types.SettingsPreload>(webpack.filters.bySource("PreloadedUserSettings"), {
+      timeout: 10000,
+    })
+    .then((mod) => Object.values(mod).find((v) => v?.typeName?.endsWith?.("PreloadedUserSettings")))
+    .catch(() => {
+      throw new Error("Failed To Find PreloadedUserSettings Module");
+    });
+
   Modules.FolderConstructor ??= await webpack
     .waitForModule<Types.GenericExport>(webpack.filters.bySource(".folderIconWrapper"), {
       raw: true,
@@ -159,7 +168,8 @@ Modules.loadModules = async (): Promise<void> => {
     .catch(() => {
       throw new Error("Failed To Find DownloadButton Module");
     });
-
+  Modules.UserSettingsProtoStore ??=
+    webpack.getByStoreName<Types.UserSettingsProtoStore>("UserSettingsProtoStore");
   Modules.PermissionStore ??= webpack.getByStoreName<Types.PermissionStore>("PermissionStore");
   Modules.ClientThemesBackgroundStore ??= webpack.getByStoreName<Types.ClientThemesBackgroundStore>(
     "ClientThemesBackgroundStore",

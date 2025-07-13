@@ -13,11 +13,6 @@ export default [
     find: "get isPreview",
     replacements: [
       {
-        match: /(get gradientPreset\(\){return (\w+))}/,
-        replace: (_, prefix: string, preset: string) =>
-          `${prefix}=replugged?.plugins?.getExports('dev.tharki.DiscordBypasses')?._getGradientPreset(${preset})} setGradientPreset(e){${preset}=e}`,
-      },
-      {
         match: /(get isPreview\(\){return (\w+))}/,
         replace: (_, prefix: string, orignal: string) =>
           `${prefix}=replugged?.plugins?.getExports('dev.tharki.DiscordBypasses')?._getIsPreview(${orignal})}`,
@@ -25,12 +20,21 @@ export default [
     ],
   },
   {
-    find: "get systemPrefersColorScheme",
+    find: ".CUSTOM_THEMES_EDITOR_COACHMARK)",
     replacements: [
       {
-        match: /(get theme\(\){return) (\w+\(\))}/,
-        replace: (_, prefix: string, preset: string) =>
-          `${prefix} replugged?.plugins?.getExports('dev.tharki.DiscordBypasses')?._getTheme(${preset})}`,
+        match: /=\(0,\w+\.\w+\)\(\w+\.\w+\.TIER_2\)/g,
+        replace: () => `=true`,
+      },
+    ],
+  },
+  {
+    find: ".USER_SETTINGS_PROTO(this.type)",
+    replacements: [
+      {
+        match: /this\.ProtoClass,(\w+\.protoToSave)/g,
+        replace: (_, setting: string) =>
+          `this.ProtoClass,replugged?.plugins?.getExports('dev.tharki.DiscordBypasses')?._getSettingsProtoToSave(${setting})`,
       },
     ],
   },

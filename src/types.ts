@@ -259,6 +259,34 @@ export namespace Types {
   export interface ImagePickerState {
     img: string;
   }
+  export interface UserSettingsProtoStore extends Store {
+    getDismissedGuildContent: DefaultTypes.AnyFunction;
+    getFullState: DefaultTypes.AnyFunction;
+    getGuildFolders: DefaultTypes.AnyFunction;
+    getGuildRecentsDismissedAt: DefaultTypes.AnyFunction;
+    getState: DefaultTypes.AnyFunction;
+    hasLoaded: DefaultTypes.AnyFunction;
+    initialize: DefaultTypes.AnyFunction;
+    constructor: DefaultTypes.AnyFunction;
+    frecencyWithoutFetchingLatest: object;
+    settings: Record<string, unknown> & {
+      appearance: { clientThemeSettings: Record<string, unknown> };
+    };
+    wasMostRecentUpdateFromServer: boolean;
+  }
+  export interface SettingsPreload {
+    PreloadedUserSettings: {
+      defaultCheckDepth: number;
+      fields: unknown[];
+      optionsobject;
+      typeName: string;
+      binaryReadMap1: DefaultTypes.AnyFunction;
+      create: DefaultTypes.AnyFunction;
+      internalBinaryRead: DefaultTypes.AnyFunction;
+      internalBinaryWrite: DefaultTypes.AnyFunction;
+    };
+  }
+
   export interface Modules {
     loadModules?: () => Promise<void>;
     TimeoutManager?: Types.GenericModule;
@@ -273,6 +301,8 @@ export namespace Types {
     ClientThemesBackgroundStore?: ClientThemesBackgroundStore;
     ImageConstructor?: Record<string, DefaultTypes.AnyFunction | RegExp>;
     ClientThemeUpdate?: Types.GenericModule;
+    PreloadedUserSettings?: SettingsPreload["PreloadedUserSettings"];
+    UserSettingsProtoStore?: UserSettingsProtoStore;
     GradientPresetsModule?: Record<string, Record<string, string>>;
     GradientPresets?: {
       BACKGROUND_GRADIENT_PRESETS_MAP: Record<string, string>;
