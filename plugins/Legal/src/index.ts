@@ -1,10 +1,7 @@
 import { Injector, Logger, settings } from "replugged";
 import { defaultSettings } from "./lib/consts";
 export const PluginLogger = Logger.plugin("LegalDiscordBypasses");
-export const SettingValues = await settings.init(
-  "dev.tharki.LegalDiscordBypasses",
-  defaultSettings,
-);
+export const SettingValues = settings.init("dev.tharki.LegalDiscordBypasses", defaultSettings);
 export const PluginInjector = new Injector();
 import Settings from "./Components/Settings";
 import Injections from "./injections/index";
