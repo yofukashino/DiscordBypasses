@@ -83,34 +83,6 @@ Modules.loadModules = async (): Promise<void> => {
       throw new Error("Failed To Find ImageConstructor Module");
     });
 
-  Modules.ClientThemeUpdate ??= await webpack
-    .waitForModule<Types.GenericModule>(
-      webpack.filters.bySource("clientThemeSettings:{backgroundGradientPresetId"),
-      {
-        timeout: 10000,
-      },
-    )
-    .catch(() => {
-      throw new Error("Failed To Find ClientThemeUpdate Module");
-    });
-
-  Modules.GradientPresetsModule ??= await webpack
-    .waitForModule<Record<string, Record<string, string>>>(
-      webpack.filters.bySource(".MINT_APPLE,theme"),
-      {
-        timeout: 10000,
-      },
-    )
-    .catch(() => {
-      throw new Error("Failed To Find GradientPresets Module");
-    });
-
-  Modules.GradientPresets ??= {
-    BACKGROUND_GRADIENT_PRESETS_MAP: Object.values(Modules.GradientPresetsModule).find(
-      (x) => !Array.isArray(x),
-    ),
-  };
-
   Modules.PreloadedUserSettings ??= await webpack
     .waitForModule<Types.SettingsPreload>(webpack.filters.bySource("PreloadedUserSettings"), {
       timeout: 10000,

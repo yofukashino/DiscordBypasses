@@ -16,7 +16,7 @@ export default (): void => {
     ) => {
       if (res.appearance && SettingValues.get("clientThemes", defaultSettings.clientThemes))
         res.appearance.clientThemeSettings =
-          UserSettingsProtoStore.settings.appearance.clientThemeSettings ??
+          UserSettingsProtoStore.settings?.appearance?.clientThemeSettings ??
           SettingValues.get("clientThemeSettings", defaultSettings.clientThemeSettings);
       return res;
     },
