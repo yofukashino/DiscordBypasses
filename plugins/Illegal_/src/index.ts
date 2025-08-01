@@ -1,7 +1,7 @@
 import { Injector, Logger, settings } from "replugged";
 import { defaultSettings } from "./lib/consts";
 export const PluginLogger = Logger.plugin("DiscordBypasses", "#b380ff");
-export const SettingValues = await settings.init("dev.tharki.DiscordBypasses", defaultSettings);
+export const SettingValues = settings.init("dev.tharki.DiscordBypasses", defaultSettings);
 export const PluginInjector = new Injector();
 import Settings from "./Components/Settings";
 import Injection from "./injections/index";
