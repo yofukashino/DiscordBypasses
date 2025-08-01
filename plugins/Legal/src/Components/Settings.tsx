@@ -1,5 +1,4 @@
 import { util } from "replugged";
-import { users as UltimateUserStore } from "replugged/common";
 import { Divider, FormText, SelectItem, SwitchItem } from "replugged/components";
 import { PluginLogger, SettingValues } from "../index";
 import { defaultSettings } from "../lib/consts";
@@ -17,20 +16,6 @@ export const registerSettings = (): void => {
 export const Settings = () => {
   return (
     <div>
-      <SwitchItem
-        disabled={
-          UltimateUserStore.getCurrentUser()?.nsfwAllowed &&
-          !SettingValues.get("NSFW", defaultSettings.NSFW)
-        }
-        note="Bypasses the channel restriction when you're too young to enter channels marked as NSFW."
-        {...util.useSetting(SettingValues, "NSFW", defaultSettings.NSFW)}>
-        NSFW bypass
-      </SwitchItem>
-      <SwitchItem
-        note="Lets you stay alone in a call for longer than 5 minutes."
-        {...util.useSetting(SettingValues, "bandwidth", defaultSettings.bandwidth)}>
-        Call timeout
-      </SwitchItem>
       <SwitchItem
         note="Lets you use voice activity in channels that enforce the use of push-to-talk."
         {...util.useSetting(SettingValues, "PTT", defaultSettings.PTT)}>
@@ -62,11 +47,7 @@ export const Settings = () => {
         {...util.useSetting(SettingValues, "spotifyPause", defaultSettings.spotifyPause)}>
         Spotify Pause
       </SwitchItem>
-      <SwitchItem
-        note="Removes the 10 minutes wait before being able to join voice channels in newly joined guilds."
-        {...util.useSetting(SettingValues, "verification", defaultSettings.verification)}>
-        Guild verification bypass
-      </SwitchItem>
+
       <SwitchItem
         note="Removes the maximum account limit in Discord's built-in account switcher."
         {...util.useSetting(SettingValues, "maxAccounts", defaultSettings.maxAccounts)}>

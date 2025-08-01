@@ -1,0 +1,18 @@
+export const defaultSettings = {
+  PTT: true,
+  setBadge: true,
+  streamPreview: true,
+  fakePreview: "",
+  noAFK: true,
+  spotifyPremium: true,
+  spotifyPause: true,
+  maxAccounts: true,
+  clientThemes: true,
+  appIcons: true,
+  clientThemeSettings: null,
+  plainFolderIcon: true,
+  favIMG: true,
+  ringtone: "sync",
+  spam: true,
+  voiceMessage: true,
+};
