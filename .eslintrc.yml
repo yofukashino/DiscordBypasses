@@ -47,7 +47,7 @@ overrides:
       consistent-return: off
       "@typescript-eslint/naming-convention": off
 
-  - files: "**/src/**/*.ts"
+  - files: "**/plugins/**/src/**/*.ts"
     extends: eslint-config-dmitmel/rules/typescript/with-type-checking
     rules:
       "@typescript-eslint/no-unnecessary-condition": off
@@ -55,6 +55,6 @@ overrides:
     rules:
       no-var: off
 
-  - files: "src/**/*.ts"
+  - files: "plugins/**/src/**/*.ts"
     parserOptions:
       project: tsconfig.json
