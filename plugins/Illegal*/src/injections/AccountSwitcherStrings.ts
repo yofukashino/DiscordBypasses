@@ -1,1 +1,1 @@
-../../../../common/AccountSwitcherStrings.ts
+../../../../common/injections/AccountSwitcherStrings.ts
