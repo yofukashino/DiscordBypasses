@@ -1,1 +1,1 @@
-../../AccountSwitcherStrings.ts
+../../common/AccountSwitcherStrings.ts
