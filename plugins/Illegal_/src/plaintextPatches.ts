@@ -4,7 +4,7 @@ export default [
     find: "multiaccount_cta_tooltip_seen",
     replacements: [
       {
-        match: /(let \w+=)\d+(,\w+="switch-accounts-modal",\w+="multiaccount_cta_tooltip_seen")/,
+        match: /(let \w+=)\d+(,\w+="switch-accounts-modal",\w+="multiaccount-login-modal")/,
         replace: (_, prefix: string, suffix: string) => `${prefix}Infinity${suffix}`,
       },
     ],
@@ -71,6 +71,36 @@ export default [
         match: /\w+\.\w+\.isPremium\(\w+\.default\.getCurrentUser\(\)\)/,
         replace: (premium) =>
           `(replugged?.plugins?.getExports('dev.tharki.DiscordBypasses')?._getAppIconsEnabled()||${premium})`,
+      },
+    ],
+  },
+  {
+    find: "this.idleTimeout",
+    replacements: [
+      {
+        match: /"idleTimeout",(new .{1,3}?\..{1,3}?)\)/,
+        replace: (_, timeout: string) =>
+          `"idleTimeout",replugged?.plugins?.getExports('dev.tharki.DiscordBypasses')?._getDiffusedTimeout(${timeout}))`,
+      },
+    ],
+  },
+  {
+    find: "Playback auto paused",
+    replacements: [
+      {
+        match: /\w+===\w+\.default\.getId\(\)/,
+        replace: (suffix) =>
+          `replugged?.plugins?.getExports('dev.tharki.DiscordBypasses')?._getSpotifyPauseDisabled() && ${suffix}`,
+      },
+    ],
+  },
+  {
+    find: "this.nativeLoggerEnabled",
+    replacements: [
+      {
+        match: /&&console\[/,
+        replace: () =>
+          `&&(replugged.plugins.getExports('dev.tharki.DiscordBypasses')?._isLoggerEnabled() ?? true)&&console[`,
       },
     ],
   },

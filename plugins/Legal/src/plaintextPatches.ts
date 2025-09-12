@@ -74,4 +74,24 @@ export default [
       },
     ],
   },
+  {
+    find: "Playback auto paused",
+    replacements: [
+      {
+        match: /\w+===\w+\.default\.getId\(\)/,
+        replace: (suffix) =>
+          `replugged?.plugins?.getExports('dev.tharki.DiscordBypasses')?._getSpotifyPauseDisabled() && ${suffix}`,
+      },
+    ],
+  },
+  {
+    find: "this.nativeLoggerEnabled",
+    replacements: [
+      {
+        match: /&&console\[/,
+        replace: () =>
+          `&&replugged.plugins.getExports('dev.tharki.LegalDiscordBypasses')?._isLoggerEnabled()&&console[`,
+      },
+    ],
+  },
 ] as Types.DefaultTypes.PlaintextPatch[];

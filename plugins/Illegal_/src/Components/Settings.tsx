@@ -119,6 +119,11 @@ export const Settings = () => {
         {...util.useSetting(SettingValues, "voiceMessage", defaultSettings.voiceMessage)}>
         Downloadable Voice Messages
       </SwitchItem>
+      <SwitchItem
+        note="Silence discord's logger (The Purple ones)."
+        {...util.useSetting(SettingValues, "silenceLogger", defaultSettings.silenceLogger)}>
+        Silence Logger
+      </SwitchItem>
       <FormText.LABEL_BOLD
         style={{
           textAlign: "center",

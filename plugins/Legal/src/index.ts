@@ -25,4 +25,6 @@ export {
   _getAppIconsEnabled,
   _getCustomThemesEnabled,
   _getSettingsProtoToSave,
+  _getSpotifyPauseDisabled,
+  _isLoggerEnabled,
 } from "./plaintextFunctions";

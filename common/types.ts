@@ -14,20 +14,8 @@ export namespace Types {
   export type OriginalChannel = GeneralDiscordTypes.Channel;
   export type Guild = GeneralDiscordTypes.Guild;
   export type Role = GeneralDiscordTypes.Role;
-  export type User = GeneralDiscordTypes.User;
-  export type GenericModule = Record<string, DefaultTypes.AnyFunction> & {
-    default: DefaultTypes.AnyFunction;
-  };
-  export interface GenericExport {
-    exports?: GenericModule;
-    id: string;
-    loaded: boolean;
-  }
-  export interface GenericMemo {
-    $$typeof: symbol;
-    compare: DefaultTypes.AnyFunction;
-    type: DefaultTypes.AnyFunction;
-  }
+  export type User = GeneralDiscordTypes.User & { nsfwAllowed: boolean & { original: boolean } };
+
   export interface ElectronModule {
     architecture: string;
     asyncify: DefaultTypes.AnyFunction;
@@ -112,75 +100,12 @@ export namespace Types {
     undetectPid: DefaultTypes.AnyFunction;
     updateCrashReporter: DefaultTypes.AnyFunction;
   }
-  export interface Permissions {
-    ADD_REACTIONS: bigint;
-    ADMINISTRATOR: bigint;
-    ATTACH_FILES: bigint;
-    BAN_MEMBERS: bigint;
-    CHANGE_NICKNAME: bigint;
-    CONNECT: bigint;
-    CREATE_EVENTS: bigint;
-    CREATE_GUILD_EXPRESSIONS: bigint;
-    CREATE_INSTANT_INVITE: bigint;
-    CREATE_PRIVATE_THREADS: bigint;
-    CREATE_PUBLIC_THREADS: bigint;
-    DEAFEN_MEMBERS: bigint;
-    EMBED_LINKS: bigint;
-    KICK_MEMBERS: bigint;
-    MANAGE_CHANNELS: bigint;
-    MANAGE_EVENTS: bigint;
-    MANAGE_GUILD: bigint;
-    MANAGE_GUILD_EXPRESSIONS: bigint;
-    MANAGE_MESSAGES: bigint;
-    MANAGE_NICKNAMES: bigint;
-    MANAGE_ROLES: bigint;
-    MANAGE_THREADS: bigint;
-    MANAGE_WEBHOOKS: bigint;
-    MENTION_EVERYONE: bigint;
-    MODERATE_MEMBERS: bigint;
-    MOVE_MEMBERS: bigint;
-    MUTE_MEMBERS: bigint;
-    PRIORITY_SPEAKER: bigint;
-    READ_MESSAGE_HISTORY: bigint;
-    REQUEST_TO_SPEAK: bigint;
-    SEND_MESSAGES: bigint;
-    SEND_MESSAGES_IN_THREADS: bigint;
-    SEND_TTS_MESSAGES: bigint;
-    SEND_VOICE_MESSAGES: bigint;
-    SPEAK: bigint;
-    STREAM: bigint;
-    USE_APPLICATION_COMMANDS: bigint;
-    USE_EMBEDDED_ACTIVITIES: bigint;
-    USE_EXTERNAL_EMOJIS: bigint;
-    USE_EXTERNAL_SOUNDS: bigint;
-    USE_EXTERNAL_STICKERS: bigint;
-    USE_SOUNDBOARD: bigint;
-    USE_VAD: bigint;
-    VIEW_AUDIT_LOG: bigint;
-    VIEW_CHANNEL: bigint;
-    VIEW_CREATOR_MONETIZATION_ANALYTICS: bigint;
-    VIEW_GUILD_ANALYTICS: bigint;
-  }
-  export interface DiscordConstants {
-    Permissions: Permissions;
-    VerificationCriteria: { ACCOUNT_AGE: number; MEMBER_AGE: number };
-  }
+
   export interface ImageConstructor {
     IMAGE_GIF_RE: RegExp;
     default: { isAnimated: DefaultTypes.AnyFunction } & DefaultTypes.AnyFunction;
   }
-  export interface ClientThemesExperimentConfig {
-    getCurrentConfig: () => {
-      hasClientThemes: boolean;
-      hasSidebarEditor: boolean;
-    };
-  }
-  export interface TimeoutManager {
-    DelayedCall: DefaultTypes.AnyFunction;
-    Interval: DefaultTypes.AnyFunction;
-    Timeout: DefaultTypes.AnyFunction;
-    timeoutPromise: DefaultTypes.AnyFunction;
-  }
+
   export interface SpotifyProtocoalStore {
     SpotifyAPI: {
       get: DefaultTypes.AnyFunction;
@@ -218,21 +143,6 @@ export namespace Types {
     initialize: DefaultTypes.AnyFunction;
     isRoleHigher: DefaultTypes.AnyFunction;
     clearVars: DefaultTypes.AnyFunction;
-  }
-  export interface ApplicationStreamPreviewStore extends Store {
-    getIsPreviewLoading: DefaultTypes.AnyFunction;
-    getPreviewURL: DefaultTypes.AnyFunction;
-    getPreviewURLForStreamKey: DefaultTypes.AnyFunction;
-  }
-  export interface ClientThemesBackgroundStore extends Store {
-    getLinearGradient: DefaultTypes.AnyFunction;
-    constructor: DefaultTypes.AnyFunction;
-    gradientAngle: number | null | undefined;
-    gradientPreset: object | null | undefined;
-    isEditorOpen: boolean;
-    isPreview: boolean;
-    mobilePendingThemeIndex: number | null | undefined;
-    setGradientPreset: DefaultTypes.AnyFunction;
   }
   export interface IdleStore extends Store {
     getIdleSince: DefaultTypes.AnyFunction;
@@ -289,32 +199,22 @@ export namespace Types {
 
   export interface Modules {
     loadModules?: () => Promise<void>;
-    TimeoutManager?: Types.GenericModule;
-    DiscordConstants?: Types.GenericModule;
-    AccountSwitcherStrings?: Types.GenericModule;
+    AccountSwitcherStrings?: DefaultTypes.ModuleExports;
     PermissionStore?: PermissionStore;
     ElectronModule?: ElectronModule;
-    ApplicationStreamPreviewStore?: ApplicationStreamPreviewStore;
     IdleStore?: IdleStore;
-    SpotifyProtocoalStore?: Types.GenericModule;
-    SpotifyChecks?: Types.GenericModule;
-    ClientThemesBackgroundStore?: ClientThemesBackgroundStore;
+    SpotifyProtocoalStore?: DefaultTypes.ModuleExports;
+    SpotifyChecks?: DefaultTypes.ModuleExports;
     ImageConstructor?: Record<string, DefaultTypes.AnyFunction | RegExp>;
-    ClientThemeUpdate?: Types.GenericModule;
     PreloadedUserSettings?: SettingsPreload["PreloadedUserSettings"];
     UserSettingsProtoStore?: UserSettingsProtoStore;
-    GradientPresetsModule?: Record<string, Record<string, string>>;
-    GradientPresets?: {
-      BACKGROUND_GRADIENT_PRESETS_MAP: Record<string, string>;
-    };
-    FolderConstructor?: GenericModule;
-    ImageInput?: Types.GenericModule;
+    FolderConstructor?: DefaultTypes.ModuleExports;
+    ImageInput?: DefaultTypes.ModuleExports;
     AudioResolverPromise?: Promise<{
       exports: Types.DefaultTypes.AnyFunction;
     }>;
-    HashMap?: Record<string, string>;
-    SpamUtils?: Types.GenericModule;
-    VoiceMessage?: GenericMemo;
+    SpamUtils?: DefaultTypes.ModuleExports;
+    VoiceMessage?: React.MemoExoticComponent<React.FC<unknown>>;
     DownloadButton?: DownloadButton;
   }
 }

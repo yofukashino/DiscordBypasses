@@ -3,9 +3,15 @@ import { PluginInjector, SettingValues } from "../index";
 import { defaultSettings } from "../lib/consts";
 
 export default (): void => {
-  PluginInjector.after(UltimateUserStore, "getCurrentUser", ([original]: [boolean], res) => {
-    if (!original && res && !res?.nsfwAllowed)
-      res.nsfwAllowed = SettingValues.get("NSFW", defaultSettings.NSFW);
+  PluginInjector.after(UltimateUserStore, "getCurrentUser", (_, res) => {
+    if (res && !res?.nsfwAllowed) {
+      const nsfwAllowed: boolean & { original?: boolean } = SettingValues.get(
+        "NSFW",
+        defaultSettings.NSFW,
+      );
+      nsfwAllowed.original = res.nsfwAllowed;
+      res.nsfwAllowed = nsfwAllowed;
+    }
     return res;
   });
 };

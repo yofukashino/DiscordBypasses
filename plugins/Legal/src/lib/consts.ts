@@ -15,4 +15,5 @@ export const defaultSettings = {
   ringtone: "sync",
   spam: true,
   voiceMessage: true,
+  silenceLogger: false,
 };

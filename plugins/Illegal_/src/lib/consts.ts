@@ -3,10 +3,7 @@ import Types from "../types";
 
 export const defaultSettings = {
   get NSFW() {
-    return (
-      !(UltimateUserStore.getCurrentUser as (original: boolean) => Types.User)(true)?.nsfwAllowed ||
-      false
-    );
+    return !(UltimateUserStore.getCurrentUser() as Types.User)?.nsfwAllowed.original || false;
   },
   bandwidth: true,
   PTT: true,
@@ -26,4 +23,5 @@ export const defaultSettings = {
   ringtone: "sync",
   spam: true,
   voiceMessage: true,
+  silenceLogger: false,
 };
