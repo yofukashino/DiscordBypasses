@@ -80,7 +80,7 @@ export default [
       {
         match: /\w+===\w+\.default\.getId\(\)/,
         replace: (suffix) =>
-          `replugged?.plugins?.getExports('dev.tharki.DiscordBypasses')?._getSpotifyPauseDisabled() && ${suffix}`,
+          `replugged?.plugins?.getExports('dev.tharki.LegalDiscordBypasses')?._getSpotifyPauseDisabled() && ${suffix}`,
       },
     ],
   },
