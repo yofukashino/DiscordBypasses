@@ -1,0 +1,34 @@
+{
+  "extends": "../../tsconfig.json",
+  "compilerOptions": {
+    "paths": {
+      "@Types": [
+        "Disallowed/src/types.ts"
+      ],
+      "@consts": [
+        "Disallowed/src/lib/consts.ts"
+      ],
+      "@this": [
+        "Allowed/src/index.tsx"
+      ],
+      "@components/*": [
+        "Disallowed/src/Components/*",
+      ],
+      "@lib/*": [
+        "Disallowed/src/lib/*"
+      ],
+      "@Injections": [
+        "Allowed/src/injections"
+      ],
+      "@Style": [
+        "Disallowed/src/style.css"
+      ],
+      "@Plaintext": [
+        "Disallowed/src/plaintextPatches.ts"
+      ],
+      "@PlaintextFunctions": [
+        "Disallowed/src/plaintextFunctions.tsx",
+      ]
+    }
+  }
+}

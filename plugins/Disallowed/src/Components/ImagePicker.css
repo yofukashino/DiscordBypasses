@@ -1,0 +1,21 @@
+.discordBypasses-imagePicker {
+  gap: 6px;
+}
+
+.discordBypasses-imagePicker-preview {
+  background-color: var(--background-secondary-alt);
+  position: relative;
+  height: 142px;
+  min-width: 250px;
+  border-radius: 10px;
+}
+.discordBypasses-imagePicker-preview > img {
+  height: 100%;
+  object-fit: contain;
+  width: 100%;
+}
+
+.discordBypasses-imagePicker-previewText {
+  text-align: center;
+  margin-top: 62px;
+}
