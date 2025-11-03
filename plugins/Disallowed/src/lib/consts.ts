@@ -19,4 +19,5 @@ export const DefaultSettings = {
   spam: false,
   voiceMessage: true,
   silenceLogger: false,
+  streamPause: false,
 };

@@ -59,3 +59,7 @@ export const _getSpotifyPauseDisabled = (): boolean => {
 export const _isLoggerEnabled = (): boolean => {
   return !SettingValues.get("silenceLogger", DefaultSettings.silenceLogger);
 };
+
+export const _isStreamPlaying = (focused: boolean): boolean => {
+  return SettingValues.get("streamPause", DefaultSettings.streamPause) || focused;
+};

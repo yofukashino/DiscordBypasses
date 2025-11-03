@@ -160,6 +160,13 @@ export const Settings = ({ store } = { store: false }): React.ReactElement => {
         description="Silence discord's logger (The Purple ones)."
         {...util.useSetting(SettingValues, "silenceLogger", DefaultSettings.silenceLogger)}
       />
+
+      <Switch
+        label="Never Stream Paused"
+        description="Keep your stream playing even while discord is not focused."
+        {...util.useSetting(SettingValues, "streamPause", DefaultSettings.streamPause)}
+      />
+
       <Text
         variant="redesign/message-preview/semibold"
         style={{

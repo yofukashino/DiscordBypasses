@@ -111,11 +111,22 @@ export const getPatches = (id?: string, all?: boolean): Types.DefaultTypes.Plain
       ],
     },
     {
-      find: "StreamTile",
+      find: "Stream Tile",
       replacements: [
         {
-          match: /\w+\.\w+\.isFocused\(\)/,
-          replace: () => `true`,
+          match: /\i\.\i\.isFocused\(\)/,
+          replace: (focused) =>
+            `replugged.plugins.getExports('${id}')?._isStreamPlaying(${focused})`,
+        },
+      ],
+    },
+    {
+      find: "get streamerPaused",
+      replacements: [
+        {
+          match: /isMainWindowFocused:(\i\.\i\.isFocused\(\))/,
+          replace: (_, focused) =>
+            `isMainWindowFocused:replugged.plugins.getExports('${id}')?._isStreamPlaying(${focused})`,
         },
       ],
     },
