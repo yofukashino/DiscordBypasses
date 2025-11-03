@@ -27,4 +27,5 @@ export {
   _getSettingsProtoToSave,
   _getSpotifyPauseDisabled,
   _isLoggerEnabled,
+  _isStreamPlaying,
 } from "@PlaintextFunctions";

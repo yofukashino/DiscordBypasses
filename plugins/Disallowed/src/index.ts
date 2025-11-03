@@ -28,4 +28,5 @@ export {
   _getDiffusedTimeout,
   _getSpotifyPauseDisabled,
   _isLoggerEnabled,
+  _isStreamPlaying,
 } from "@PlaintextFunctions";
