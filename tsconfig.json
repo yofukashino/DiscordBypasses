@@ -134,6 +134,7 @@
   },
   "include": [
     "./plugins/Allowed",
-    "./plugins/Disallowed"
+    "./plugins/Disallowed",
+    "./"
   ]
 }
