@@ -5,7 +5,7 @@ A collection of "legal" bypasses and utilities in one plugin.
 You can toggle them in the plugin settings.
 
 Direct Download Link: 
-[![dev.tharki.LegalDiscordBypasses.asar](https://img.shields.io/github/downloads/yofukashino/LegalDiscordBypasses/total.svg?style=social&label=Direct%20Download)](https://GitHub.com/yofukashino/LegalDiscordBypasses/releases/latest/download/dev.tharki.LegalDiscordBypasses.asar)
+[![dev.tharki.LegalDiscordBypasses.asar](https://img.shields.io/github/downloads/yofukashino/DiscordBypasses/total.svg?style=social&label=Direct%20Download)](https://GitHub.com/yofukashino/DiscordBypasses/releases/latest/download/dev.tharki.LegalDiscordBypasses.asar)
 
 
 Install Link:
