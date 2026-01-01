@@ -35,7 +35,7 @@ Install Link:
 
 ![db](https://i.imgur.com/Tqcr5zs.png)
 
-<sub>For less risky bypasses install replugged store version: [LegalDiscordBypasses](https://github.com/yofukashino/LegalDiscordBypasses)</sub>
+<sub>For less risky bypasses install replugged store version: [LegalDiscordBypasses](https://github.com/yofukashino/DiscordBypasses?tab=readme-ov-file#legaldiscordbypasses)</sub>
 
 ---
 
