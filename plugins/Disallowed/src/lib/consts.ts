@@ -20,4 +20,5 @@ export const DefaultSettings = {
   voiceMessage: true,
   silenceLogger: false,
   streamPause: false,
+  ageVerification: false,
 };

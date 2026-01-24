@@ -29,7 +29,10 @@ export namespace Types {
   export type OriginalChannel = GeneralDiscordTypes.Channel;
   export type Guild = GeneralDiscordTypes.Guild;
   export type Role = GeneralDiscordTypes.Role;
-  export type User = GeneralDiscordTypes.User & { nsfwAllowed: boolean & { original: boolean } };
+  export type User = GeneralDiscordTypes.User & {
+    nsfwAllowed: boolean & { original?: boolean };
+    ageVerificationStatus: number;
+  };
 
   export interface Modules {
     Proxy: Exclude<Modules, "Proxy" | "loadModules">;

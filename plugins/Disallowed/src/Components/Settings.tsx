@@ -5,6 +5,8 @@ import { PluginLogger, SettingValues } from "@this";
 import { DefaultSettings } from "@consts";
 import ImagePicker from "./ImagePicker";
 
+import type Types from "@Types";
+
 export const migrateSettings = (id: string): void => {
   const OldNamespace = settings.init(id, {});
   type DefaultSettings = typeof DefaultSettings;
@@ -43,17 +45,28 @@ export const Settings = ({ store } = { store: false }): React.ReactElement => {
     if (store) return <></>;
     return children;
   };
+  const currentUser = users.getCurrentUser() as Types.User;
 
   return (
     <Stack gap={24}>
       <NotAllowedSetting>
         <Switch
           label="NSFW bypass"
-          disabled={
-            users.getCurrentUser()?.nsfwAllowed && !SettingValues.get("NSFW", DefaultSettings.NSFW)
-          }
+          disabled={currentUser?.nsfwAllowed && !SettingValues.get("NSFW", DefaultSettings.NSFW)}
           description="Bypasses the channel restriction when you're too young to enter channels marked as NSFW."
           {...util.useSetting(SettingValues, "NSFW", DefaultSettings.NSFW)}
+        />
+      </NotAllowedSetting>
+      <NotAllowedSetting>
+        <Switch
+          label="Age Verification bypass"
+          disabled={
+            !(currentUser?.nsfwAllowed?.original !== void 0
+              ? currentUser?.nsfwAllowed?.original
+              : currentUser?.nsfwAllowed)
+          }
+          description="(EXPERIMENTAL!) Bypass the channel restriction where discord wants your ID to enter channels marked as NSFW."
+          {...util.useSetting(SettingValues, "ageVerification", DefaultSettings.ageVerification)}
         />
       </NotAllowedSetting>
       <NotAllowedSetting>
