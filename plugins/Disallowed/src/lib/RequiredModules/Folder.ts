@@ -5,7 +5,7 @@ import type Types from "@Types";
 export type Folder = Types.DefaultTypes.RawModule<Record<string, () => Types.ReactTree>>;
 
 export default await webpack
-  .waitForModule<Folder>(webpack.filters.bySource(".folderIconWrapper"), {
+  .waitForModule<Folder>(webpack.filters.bySource("isFolder:!0,upperBadge:"), {
     raw: true,
     timeout: 10000,
   })

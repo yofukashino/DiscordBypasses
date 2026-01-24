@@ -25,16 +25,16 @@
     "@eslint/js": "^9.25.0",
     "@types/node": "^22.14.1",
     "@types/react": "^18.2.31",
+    "discord-client-types": "^0.0.10",
     "discord-types": "^1.3.3",
     "eslint": "^9.25.0",
     "eslint-plugin-react": "^7.37.5",
     "globals": "^16.0.0",
     "jiti": "^2.6.1",
     "prettier": "^3.5.3",
-    "replugged": "^4.11.0",
+    "replugged": "^4.11.1",
     "typescript": "~5.9.3",
     "typescript-eslint": "^8.46.0",
-    "discord-client-types": "^0.0.10"
-  },
-  "dependencies": {}
+    "esbuild": "^0.27.2"
+  }
 }

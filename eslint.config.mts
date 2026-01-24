@@ -17,6 +17,7 @@ export default defineConfig(
         version: "18.3",
       },
     },
+    ignores: ["*.mjs", "*.js"],
     languageOptions: {
       ecmaVersion: 2022,
       globals: {

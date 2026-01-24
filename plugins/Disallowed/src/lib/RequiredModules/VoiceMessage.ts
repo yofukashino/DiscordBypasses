@@ -8,7 +8,7 @@ export interface VoiceMessage {
 
 export default await webpack
   .waitForModule<React.MemoExoticComponent<React.FC<unknown>>>(
-    webpack.filters.bySource("waveform,waveform"),
+    webpack.filters.bySource(".VOICE_MESSAGE_PLAYBACK_STARTED,{src"),
     {
       timeout: 10000,
     },
